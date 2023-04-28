@@ -1,7 +1,6 @@
 import { setLocalStorage } from "./utils.mjs";
 import { findProductById } from "./productData.mjs";
 let products = [];
-console.log(products)
 
 function addProductToCart(product) {
   if(localStorage.getItem("so-cart")){
