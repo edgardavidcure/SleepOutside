@@ -21,4 +21,4 @@ Use this as a starting point to complete the WDD 330 team activity: the SleepOut
 
 ## Site domain
 
-- https://main--regal-dodol-f909a3.netlify.app/
+- https://main--merry-tapioca-f60f19.netlify.app/
