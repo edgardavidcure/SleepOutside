@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 const cartItems = getLocalStorage("so-cart");
 const cartSection = document.querySelector(".cart-footer");
 const cartTotalElement = document.querySelector(".cart-total");
@@ -7,8 +7,12 @@ const cartTotalElement = document.querySelector(".cart-total");
 let cartTotal = 0
 function renderCartContents() {
   if(cartItems){
-    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+    const htmlItems = cartItems.map((item, index) => cartItemTemplate(item,index));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
+    for(let i = 0; i < cartItems.length; i++){
+      const dataId = document.querySelector(`#item-${i}`);
+      document.querySelector(`#item-${i}`).addEventListener("click",() => onDelete(`${dataId.getAttribute("data-id")}`));
+    }
     calculateTotal();
     renderCartTotal();
   }else{
@@ -16,7 +20,7 @@ function renderCartContents() {
   }
 }
 
-function cartItemTemplate(item) {
+function cartItemTemplate(item,index) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
@@ -30,6 +34,7 @@ function cartItemTemplate(item) {
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
+  <span class="cart-delete" data-id="${item.Id}" id="item-${index}">X</span>
 </li>`;
 
   return newItem;
@@ -47,4 +52,14 @@ function renderCartTotal(){
   cartSection.classList.add("show")
   cartSection.classList.remove("hide")
 }
+
+function onDelete(idToDelete){
+  let cartContent = getLocalStorage("so-cart");
+  let findItemIndex = cartContent.findIndex(item => item.Id == idToDelete);
+  cartContent.splice(findItemIndex,1)
+  setLocalStorage("so-cart", cartContent);
+  location.reload()
+
+}
+
 renderCartContents();
