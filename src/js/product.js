@@ -18,3 +18,5 @@ document
   .getElementById("addToCart")
   .addEventListener("click", addToCartHandler);
 
+//add superscript to the cart icon
+const superscriptIcon = document.getElementById("superscript");
