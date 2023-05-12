@@ -6,7 +6,7 @@ const cartTotalElement = document.querySelector(".cart-total");
 
 let cartTotal = 0
 function renderCartContents() {
-  if(cartItems){
+  if(cartItems && (cartItems.length > 0)){
     const htmlItems = cartItems.map((item, index) => cartItemTemplate(item,index));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
     for(let i = 0; i < cartItems.length; i++){
