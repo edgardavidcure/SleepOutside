@@ -1,4 +1,5 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { setSuperscript } from "./utils.mjs";
 const cartItems = getLocalStorage("so-cart");
 const cartSection = document.querySelector(".cart-footer");
 const cartTotalElement = document.querySelector(".cart-total");
@@ -63,3 +64,4 @@ function onDelete(idToDelete){
 }
 
 renderCartContents();
+setSuperscript();
