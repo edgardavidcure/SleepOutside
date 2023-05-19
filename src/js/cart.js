@@ -7,6 +7,7 @@ const cartTotalElement = document.querySelector(".cart-total");
 
 loadHeaderFooter();
 //shoppingCart();
+renderCartContents();
 
 let cartTotal = 0
 function renderCartContents() {
