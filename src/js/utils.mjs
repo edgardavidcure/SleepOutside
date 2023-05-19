@@ -1,3 +1,5 @@
+
+
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
@@ -43,6 +45,24 @@ export function renderListWithTemplate(
   parentElement.insertAdjacentHTML(position, htmlString.join(""));
 }
 
+export async function renderWithTemplate(
+  templateFn,
+  parentElement,
+  callback,
+  position = "afterbegin",
+  clear = true
+) {
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  const htmlString = await templateFn();
+  parentElement.innerHTML = htmlString;
+  if(callback) {
+    callback();
+}
+}
+
+
 export function setSuperscript(){
   const backpackSuperscript = document.getElementById("superscript");
   let cartItems = getLocalStorage("so-cart");
@@ -52,4 +72,25 @@ export function setSuperscript(){
     backpackSuperscript.innerText = cartItems.length
     
   }
+}
+
+function loadTemplate(path) {
+  // wait what?  we are returning a new function? 
+  // this is called currying and can be very helpful.
+  return async function () {
+      const res = await fetch(path);
+      if (res.ok) {
+      const html = await res.text();
+      return html;
+      }
+  };
+} 
+
+export function loadHeaderFooter(){
+  const headerTemplateFn = loadTemplate("/partials/header.html");
+  const footerTemplateFn = loadTemplate("/partials/footer.html");
+  const headerElement = document.getElementById("main-header");
+  const footerElement = document.getElementById("main-footer");
+  renderWithTemplate(headerTemplateFn, headerElement, setSuperscript);
+  renderWithTemplate(footerTemplateFn, footerElement);
 }
