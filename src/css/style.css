@@ -173,6 +173,16 @@ button {
 .card__name {
   font-size: 1em;
 }
+
+.discount{
+  color: red;
+  font-weight: bold;
+  font-size: 0.8rem;
+  border: 2px solid red;
+  padding: 1px;
+  border-style: dashed;
+  margin-bottom: 5px;
+}
 /* End product list card */
 
 .product-detail {
