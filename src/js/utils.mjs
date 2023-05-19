@@ -42,3 +42,14 @@ export function renderListWithTemplate(
   const htmlString = list.map(templateFn);
   parentElement.insertAdjacentHTML(position, htmlString.join(""));
 }
+
+export function setSuperscript(){
+  const backpackSuperscript = document.getElementById("superscript");
+  let cartItems = getLocalStorage("so-cart");
+  if (cartItems.length == 0){
+    backpackSuperscript.style.display = "none"
+  }else{
+    backpackSuperscript.innerText = cartItems.length
+    
+  }
+}

@@ -105,11 +105,30 @@ button {
 
 .cart svg {
   width: 25px;
+  z-index: 999;
 }
 .cart:hover svg {
   fill: gray;
 }
 
+.cart a{
+  text-decoration: none;
+}
+.cart sup{
+  position: absolute;
+  background-color: #f0a868;
+  border-radius: 50%;
+  z-index: 998;
+  right: -8px;
+  top: 5px;
+  font-size: 1rem;
+  padding: 10%;
+  width: 100%;
+  font-weight: bolder;
+}
+.cart:hover{
+  filter: opacity(80%);
+}
 /* End cart icon styles */
 
 .mission {
