@@ -66,10 +66,11 @@ export async function renderWithTemplate(
 export function setSuperscript(){
   const backpackSuperscript = document.getElementById("superscript");
   let cartItems = getLocalStorage("so-cart");
-  if (cartItems.length == 0){
-    backpackSuperscript.style.display = "none"
-  }else{
-    backpackSuperscript.innerText = cartItems.length
+  
+  if(cartItems.length > 0 ) {
+    
+    backpackSuperscript.innerText = cartItems.length;
+    backpackSuperscript.style.display = "block"
     
   }
 }

@@ -115,6 +115,7 @@ button {
   text-decoration: none;
 }
 .cart sup{
+  display: none;
   position: absolute;
   background-color: #f0a868;
   border-radius: 50%;
