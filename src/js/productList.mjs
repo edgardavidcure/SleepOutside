@@ -1,5 +1,5 @@
 import { getData } from "./productData.mjs";
-import { renderListWithTemplate } from "./utils.mjs";
+import { discount, renderListWithTemplate } from "./utils.mjs";
 
 export default async function productList(selector, category) {
   let products = await getData(category);
@@ -23,6 +23,7 @@ function renderProductCard(item) {
     />
     <h3 class="card__brand">${item.Brand.Name}</h3>
     <h2 class="card__name">${item.NameWithoutBrand}</h2>
+    <p class="product-card__price slashed">$ ${item.SuggestedRetailPrice !== item.FinalPrice ? (item.SuggestedRetailPrice).toFixed(2) : ""}</p>
     <p class="product-card__price">$ ${item.FinalPrice}</p>
     </a>
   </li>
@@ -30,11 +31,4 @@ function renderProductCard(item) {
   return newItem;
 }
 
-function discount(price,newprice) {
-  if(price == newprice){
-    return ""
-  }else{
-    let discountRange = (((newprice * 100) / price).toFixed(0)) - 100
-    return discountRange
-  }
-}
+

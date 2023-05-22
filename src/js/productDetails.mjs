@@ -1,5 +1,5 @@
 import { findProductById } from "./productData.mjs"
-import { setLocalStorage } from "./utils.mjs";
+import { discount, setLocalStorage } from "./utils.mjs";
 let products = [];
 
 
@@ -28,7 +28,14 @@ function renderProductDetails(product){
   document.getElementById("productColorName").innerHTML = product.Colors[0].ColorName;
   document.getElementById("productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
   document.getElementById("addToCart").setAttribute("data-id",product.Id);
+  
+  if(product.SuggestedRetailPrice != product.FinalPrice){
+    const discountSpan = document.getElementById("discount");
+    discountSpan.setAttribute("class", "discount");
+    discountSpan.innerHTML = discount(product.SuggestedRetailPrice,product.FinalPrice);
+    document.getElementById("productSuggestedPrice").innerHTML = `$${(product.SuggestedRetailPrice).toFixed(2)}`;
 
+  }
   
 }
 
