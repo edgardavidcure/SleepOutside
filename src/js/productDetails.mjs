@@ -6,7 +6,11 @@ let products = [];
 
 export default async function productDetails(productId){
   const product = await findProductById(productId);
-  renderProductDetails(product)
+  if (product){
+    renderProductDetails(product)
+  } else {
+    renderProductNotFound();
+  }
 }
 
 export async function addProductToCart(product) {
@@ -37,6 +41,18 @@ function renderProductDetails(product){
 
   }
   
+}
+
+function renderProductNotFound(){
+  const productSection = document.querySelector(".product-detail");
+  productSection.innerHTML = "";
+  let notFoundDetails = `<h3 id='productName'></h3>
+    <h2 class='divider' id='productNameWithoutBrand'>Product Not Found</h2>
+    <p class='product__description' id='productDescriptionHtmlSimple'>Please Check Our Product List Again</p>
+    <p><a href='../index.html'>Go Back To Main Menu</a></p>`;
+  productSection.insertAdjacentHTML("afterbegin", notFoundDetails);
+
+
 }
 
 
