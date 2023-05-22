@@ -166,6 +166,13 @@ button {
   margin: 0.5em 0;
 }
 
+.slashed{
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
+  color: red;
+  font-style: italic;
+}
+
 .card__brand {
   font-size: var(--small-font);
 }
@@ -175,13 +182,13 @@ button {
 }
 
 .discount{
+  position: absolute;
   color: red;
   font-weight: bold;
   font-size: 0.8rem;
   border: 2px solid red;
-  padding: 1px;
+  padding: 5px;
   border-style: dashed;
-  margin-bottom: 5px;
 }
 /* End product list card */
 

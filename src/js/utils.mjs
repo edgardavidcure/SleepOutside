@@ -74,6 +74,15 @@ export function setSuperscript(){
   }
 }
 
+export function discount(price,newprice) {
+  if(price == newprice){
+    return ""
+  }else{
+    let discountRange = (((newprice * 100) / price).toFixed(0)) - 100
+    return discountRange
+  }
+}
+
 function loadTemplate(path) {
   // wait what?  we are returning a new function? 
   // this is called currying and can be very helpful.
