@@ -10,8 +10,17 @@ productDetails(productId);
 async function addToCartHandler(e) {
   const product = await findProductById(e.target.dataset.id);
   addProductToCart(product);
-  location.reload()
-
+  setSuperscript();
+  document.querySelector(".cart").animate([
+    // key frames
+    { transform: 'translateX(0px)' },
+    { transform: 'translateX(-10px)' },
+    { transform: 'translateX(10px)' }
+  ], {
+    // sync options
+    duration: 200,
+    iterations: 1
+  });
 }
 
 // add listener to Add to Cart button
