@@ -1,5 +1,3 @@
-
-
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
@@ -24,11 +22,11 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-export function getParam(param){
+export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const product = urlParams.get(param);
-  return product
+  return product;
 }
 
 export function renderListWithTemplate(
@@ -57,46 +55,43 @@ export async function renderWithTemplate(
   }
   const htmlString = await templateFn();
   parentElement.innerHTML = htmlString;
-  if(callback) {
+  if (callback) {
     callback();
-}
-}
-
-
-export function setSuperscript(){
-  const backpackSuperscript = document.getElementById("superscript");
-  let cartItems = getLocalStorage("so-cart");
-  
-  if(cartItems.length > 0 ) {
-    
-    backpackSuperscript.innerText = cartItems.length;
-    backpackSuperscript.style.display = "block"
-    
   }
 }
 
-export function discount(price,newprice) {
-  if(price == newprice){
-    return ""
-  }else{
-    let discountRange = (((newprice * 100) / price).toFixed(0)) - 100
-    return discountRange
+export function setSuperscript() {
+  const backpackSuperscript = document.getElementById("superscript");
+  let cartItems = getLocalStorage("so-cart");
+
+  if (cartItems.length > 0) {
+    backpackSuperscript.innerText = cartItems.length;
+    backpackSuperscript.style.display = "block";
+  }
+}
+
+export function discount(price, newprice) {
+  if (price == newprice) {
+    return "";
+  } else {
+    let discountRange = ((newprice * 100) / price).toFixed(0) - 100;
+    return discountRange;
   }
 }
 
 function loadTemplate(path) {
-  // wait what?  we are returning a new function? 
+  // wait what?  we are returning a new function?
   // this is called currying and can be very helpful.
   return async function () {
-      const res = await fetch(path);
-      if (res.ok) {
+    const res = await fetch(path);
+    if (res.ok) {
       const html = await res.text();
       return html;
-      }
+    }
   };
-} 
+}
 
-export function loadHeaderFooter(){
+export function loadHeaderFooter() {
   const headerTemplateFn = loadTemplate("/partials/header.html");
   const footerTemplateFn = loadTemplate("/partials/footer.html");
   const headerElement = document.getElementById("main-header");
