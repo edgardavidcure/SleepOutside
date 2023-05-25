@@ -49,7 +49,7 @@ function renderProductNotFound(){
   let notFoundDetails = `<h3 id='productName'></h3>
     <h2 class='divider' id='productNameWithoutBrand'>Product Not Found</h2>
     <p class='product__description' id='productDescriptionHtmlSimple'>Please Check Our Product List Again</p>
-    <p><a href='../index.html'>Go Back To Main Menu</a></p>`;
+    <p style="margin-top: 2rem;"><a class='gobackButton' href='../index.html'>Go Back To Main Menu</a></p>`;
   productSection.insertAdjacentHTML("afterbegin", notFoundDetails);
 
 
