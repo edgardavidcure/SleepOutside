@@ -167,6 +167,14 @@ button {
   margin: 0.5em 0;
 }
 
+.gobackButton {
+  text-decoration: none;
+    color: white;
+    background-color: black;
+    padding: 15px;
+    border-radius: 25px;
+    font-size: 14px;
+}
 .slashed{
   text-decoration: line-through;
   text-decoration-thickness: 3px;
