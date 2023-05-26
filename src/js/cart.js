@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage, loadHeaderFooter, setSuperscript} from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, loadHeaderFooter} from "./utils.mjs";
 import shoppingCart from "./shoppingCart.mjs";
 const cartItems = getLocalStorage("so-cart");
 const cartSection = document.querySelector(".cart-footer");

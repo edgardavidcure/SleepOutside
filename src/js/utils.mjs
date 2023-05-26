@@ -98,7 +98,6 @@ export function loadHeaderFooter() {
   const footerElement = document.getElementById("main-footer");
   renderWithTemplate(headerTemplateFn, headerElement, setSuperscript);
   renderWithTemplate(footerTemplateFn, footerElement);
-  setSuperscript();
 }
 
 export function capitalize(text) {
