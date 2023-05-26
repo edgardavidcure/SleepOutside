@@ -27,7 +27,7 @@ export async function addProductToCart(product) {
 function renderProductDetails(product){
   document.getElementById("productName").innerHTML = product.Name;
   document.getElementById("productNameWithoutBrand").innerHTML = product.NameWithoutBrand;
-  document.getElementById("productImage").setAttribute("src", product.Image);
+  document.getElementById("productImage").setAttribute("src", product.Images.PrimaryLarge);
   document.getElementById("productFinalPrice").innerHTML = `$${product.FinalPrice}`;
   document.getElementById("productColorName").innerHTML = product.Colors[0].ColorName;
   document.getElementById("productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;

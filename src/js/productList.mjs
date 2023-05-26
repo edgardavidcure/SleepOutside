@@ -1,10 +1,10 @@
 import { getData } from "./productData.mjs";
-import { discount, renderListWithTemplate } from "./utils.mjs";
+import { discount, renderListWithTemplate,capitalize } from "./utils.mjs";
 import Alert from "./alerts.js";
 
 export default async function productList(selector, category) {
+  document.getElementById("categoryName").innerHTML = capitalize(`${category}`);
   let alert = new Alert
-  console.log("Alertas" , await alert.alertsHTml())
   document.getElementById("alert-list").innerHTML = await alert.alertsHTml();
   let products = await getData(category);
 
@@ -19,10 +19,10 @@ export default async function productList(selector, category) {
 function renderProductCard(item) {
   const newItem = `
     <li class="product-card">
-    <a href="product_pages/index.html?product=${item.Id}">
+    <a href="../product_pages/index.html?product=${item.Id}">
     <span class="discount">${discount(item.SuggestedRetailPrice,item.FinalPrice)}%</span>
     <img
-      src="${item.Image}"
+      src="${item.Images.PrimaryMedium}"
       alt="${item.Name}"
     />
     <h3 class="card__brand">${item.Brand.Name}</h3>

@@ -13,7 +13,7 @@ function calculateTotal(){
   cartItems.forEach(item => {
     cartItemsPrices.push(item.FinalPrice)
   });
-  cartTotal = cartItemsPrices.reduce((a, b) => (a + b), 0);
+  cartTotal = (cartItemsPrices.reduce((a, b) => (a + b), 0)).toFixed(2);
 }
 function renderCartTotal(){
   cartTotalElement.innerHTML = `Total: <span>$${cartTotal}</span`;
@@ -49,7 +49,7 @@ function cartItemTemplate(item,index) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${item.Images.PrimarySmall}"
       alt="${item.Name}"
     />
   </a>
