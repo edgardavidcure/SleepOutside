@@ -272,6 +272,31 @@ button {
   margin: 0 1.5em;
 }
 
+#product-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0rem;
+  margin-top: 4rem;
+}
+#product-grid a{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: baseline;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+#product-grid div:hover{
+  cursor: pointer;
+}
+
+#product-grid img{
+  width: 100px;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
