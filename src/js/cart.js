@@ -4,12 +4,32 @@ const cartItems = getLocalStorage("so-cart");
 const cartSection = document.querySelector(".cart-footer");
 const cartTotalElement = document.querySelector(".cart-total");
 
+let cartTotal = 0;
 
-loadHeaderFooter();
-//shoppingCart();
-renderCartContents();
 
-let cartTotal = 0
+
+function calculateTotal(){
+  let cartItemsPrices = [];
+  cartItems.forEach(item => {
+    cartItemsPrices.push(item.FinalPrice)
+  });
+  cartTotal = cartItemsPrices.reduce((a, b) => (a + b), 0);
+}
+function renderCartTotal(){
+  cartTotalElement.innerHTML = `Total: <span>$${cartTotal}</span`;
+  cartSection.classList.add("show")
+  cartSection.classList.remove("hide")
+}
+
+function onDelete(idToDelete){
+  let cartContent = getLocalStorage("so-cart");
+  let findItemIndex = cartContent.findIndex(item => item.Id == idToDelete);
+  cartContent.splice(findItemIndex,1)
+  setLocalStorage("so-cart", cartContent);
+  location.reload()
+
+}
+
 function renderCartContents() {
   if(cartItems && cartItems.length > 0){
     const htmlItems = cartItems.map((item, index) => cartItemTemplate(item,index));
@@ -45,27 +65,10 @@ function cartItemTemplate(item,index) {
   return newItem;
 }
 
-function calculateTotal(){
-  let cartItemsPrices = [];
-  cartItems.forEach(item => {
-    cartItemsPrices.push(item.FinalPrice)
-  });
-  cartTotal = cartItemsPrices.reduce((a, b) => (a + b), 0);
-}
-function renderCartTotal(){
-  cartTotalElement.innerHTML = `Total: <span>$${cartTotal}</span`;
-  cartSection.classList.add("show")
-  cartSection.classList.remove("hide")
-}
-
-function onDelete(idToDelete){
-  let cartContent = getLocalStorage("so-cart");
-  let findItemIndex = cartContent.findIndex(item => item.Id == idToDelete);
-  cartContent.splice(findItemIndex,1)
-  setLocalStorage("so-cart", cartContent);
-  location.reload()
-
-}
 
 
 
+
+loadHeaderFooter();
+//shoppingCart();
+renderCartContents();
