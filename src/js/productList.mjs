@@ -1,7 +1,11 @@
 import { getData } from "./productData.mjs";
 import { discount, renderListWithTemplate } from "./utils.mjs";
+import Alert from "./alerts.js";
 
 export default async function productList(selector, category) {
+  let alert = new Alert
+  console.log("Alertas" , await alert.alertsHTml())
+  document.getElementById("alert-list").innerHTML = await alert.alertsHTml();
   let products = await getData(category);
 
   if (category == "tents") {
