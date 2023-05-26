@@ -64,7 +64,7 @@ export function setSuperscript() {
   const backpackSuperscript = document.getElementById("superscript");
   let cartItems = getLocalStorage("so-cart");
 
-  if (cartItems.length > 0) {
+  if (cartItems && cartItems.length > 0) {
     backpackSuperscript.innerText = cartItems.length;
     backpackSuperscript.style.display = "block";
   }
