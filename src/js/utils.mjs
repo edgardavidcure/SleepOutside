@@ -65,7 +65,11 @@ export function setSuperscript() {
   let cartItems = getLocalStorage("so-cart");
 
   if (cartItems && cartItems.length > 0) {
-    backpackSuperscript.innerText = cartItems.length;
+    let totalItemsInCart = 0;
+    cartItems.forEach(item => {
+      totalItemsInCart += item.totalInCart
+    backpackSuperscript.innerText = totalItemsInCart
+    });
     backpackSuperscript.style.display = "block";
   }
 }
