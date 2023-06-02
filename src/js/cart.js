@@ -11,7 +11,7 @@ let cartTotal = 0;
 function calculateTotal(){
   let cartItemsPrices = [];
   cartItems.forEach(item => {
-    cartItemsPrices.push(item.FinalPrice)
+    cartItemsPrices.push(item.totalInCart * item.FinalPrice) 
   });
   cartTotal = (cartItemsPrices.reduce((a, b) => (a + b), 0)).toFixed(2);
 }
@@ -57,15 +57,13 @@ function cartItemTemplate(item,index) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__quantity">Qty: ${item.totalInCart}</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
   <span class="cart-delete" data-id="${item.Id}" id="item-${index}">X</span>
 </li>`;
 
   return newItem;
 }
-
-
 
 
 

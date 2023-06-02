@@ -1,5 +1,5 @@
 import { findProductById } from "./productData.mjs"
-import { discount, setLocalStorage } from "./utils.mjs";
+import { discount, getLocalStorage, setLocalStorage } from "./utils.mjs";
 let products = [];
 
 
@@ -14,10 +14,33 @@ export default async function productDetails(productId){
 }
 
 export async function addProductToCart(product) {
-  if(localStorage.getItem("so-cart")){
-        products = JSON.parse(localStorage.getItem("so-cart"));
+  const cart = getLocalStorage("so-cart");
+  // get any item in local storage and add to products array
+  products = cart;
+  let idsArray = [];
+  // add the ids of each product to the idsArray
+  cart.forEach(cartItem => {
+    idsArray.push(cartItem.Id)
+  });
+  // set a new property to calculate how many items are in the cart with a default of 1
+  product.totalInCart = 1
+  if(idsArray.includes(product.Id) ){
+        for (let cartProduct of products){
+          //count how many repeated products are in the cart
+          let count = cartProduct.totalInCart
+          //if Ids are the same, add 1 to the total and update the total in the array
+          if (cartProduct.Id === product.Id){
+            count++;
+            cartProduct.totalInCart = count
+          } 
+        }
+      
+
+    } else {
+      //if the item is not in the cart already, add it
+      products.push(product);
+
     }
-  products.push(product);
   setLocalStorage("so-cart", products);
 
   
