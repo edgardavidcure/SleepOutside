@@ -21,10 +21,13 @@ function renderProductCard(item) {
     <li class="product-card">
     <a href="../product_pages/index.html?product=${item.Id}">
     <span class="discount">${discount(item.SuggestedRetailPrice,item.FinalPrice)}%</span>
+    <picture>
+    <source media="(max-width:500px)" srcset="${item.Images.PrimarySmall}">
+    <source media="(min-width:500px)" srcset="${item.Images.PrimaryMedium}">
     <img
-      src="${item.Images.PrimaryMedium}"
-      alt="${item.Name}"
+    alt="${item.Name}"
     />
+    </picture>
     <h3 class="card__brand">${item.Brand.Name}</h3>
     <h2 class="card__name">${item.NameWithoutBrand}</h2>
     <p class="product-card__price slashed">$ ${item.SuggestedRetailPrice !== item.FinalPrice ? (item.SuggestedRetailPrice).toFixed(2) : ""}</p>
