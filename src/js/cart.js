@@ -1,20 +1,13 @@
-import { getLocalStorage, setLocalStorage, loadHeaderFooter} from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, loadHeaderFooter, calculateTotal} from "./utils.mjs";
 import shoppingCart from "./shoppingCart.mjs";
 const cartItems = getLocalStorage("so-cart");
 const cartSection = document.querySelector(".cart-footer");
 const cartTotalElement = document.querySelector(".cart-total");
 
-let cartTotal = 0;
 
 
+let cartTotal;
 
-function calculateTotal(){
-  let cartItemsPrices = [];
-  cartItems.forEach(item => {
-    cartItemsPrices.push(item.totalInCart * item.FinalPrice) 
-  });
-  cartTotal = (cartItemsPrices.reduce((a, b) => (a + b), 0)).toFixed(2);
-}
 function renderCartTotal(){
   cartTotalElement.innerHTML = `Total: <span>$${cartTotal}</span`;
   cartSection.classList.add("show")
@@ -38,7 +31,7 @@ function renderCartContents() {
       const dataId = document.querySelector(`#item-${i}`);
       document.querySelector(`#item-${i}`).addEventListener("click",() => onDelete(`${dataId.getAttribute("data-id")}`));
     }
-    calculateTotal();
+    cartTotal = calculateTotal(cartItems);
     renderCartTotal();
   }else{
     document.querySelector(".product-list").innerHTML = "<p>The cart is empty<span style='font-size:25px;'>&#128549;</span></p>"

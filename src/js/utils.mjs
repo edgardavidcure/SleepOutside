@@ -111,3 +111,13 @@ export function capitalize(text) {
   }
   return words.join(" ");
 }
+
+export function calculateTotal(cartItems){
+  let cartTotal = 0;
+  let cartItemsPrices = [];
+  cartItems.forEach(item => {
+    cartItemsPrices.push(item.totalInCart * item.FinalPrice) 
+  });
+  cartTotal = (cartItemsPrices.reduce((a, b) => (a + b), 0)).toFixed(2);
+  return cartTotal
+}
