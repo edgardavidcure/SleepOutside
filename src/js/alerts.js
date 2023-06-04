@@ -1,9 +1,9 @@
-import { getData } from "./productData.mjs";
+import { getProductsByCategory } from "./externalServices.mjs";
 
 export default class Alert {
 
    async alertsHTml() {
-    let alerts = await getData("alerts")
+    let alerts = await getProductsByCategory("alerts")
     return this.buidAlerts(alerts);
 }
 

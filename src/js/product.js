@@ -1,4 +1,4 @@
-import { findProductById } from "./productData.mjs";
+import { findProductById } from "./externalServices.mjs";
 import productDetails from "./productDetails.mjs";
 import { addProductToCart } from "./productDetails.mjs";
 import { setSuperscript, getParam, loadHeaderFooter } from "./utils.mjs";

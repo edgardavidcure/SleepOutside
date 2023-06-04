@@ -1,4 +1,4 @@
-import { getData } from "./productData.mjs";
+import { getProductsByCategory } from "./externalServices.mjs";
 import { discount, renderListWithTemplate,capitalize } from "./utils.mjs";
 import Alert from "./alerts.js";
 
@@ -6,7 +6,7 @@ export default async function productList(selector, category) {
   document.getElementById("categoryName").innerHTML = capitalize(`${category}`);
   let alert = new Alert
   document.getElementById("alert-list").innerHTML = await alert.alertsHTml();
-  let products = await getData(category);
+  let products = await getProductsByCategory(category);
 
   if (category == "tents") {
     products = products.filter(

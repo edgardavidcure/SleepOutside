@@ -261,6 +261,9 @@ button {
 }
 .cart-footer{
   padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .cart-total{
   display: flex;
@@ -269,7 +272,7 @@ button {
   font-weight: bold;
 }
 .cart-total span{
-  margin: 0 1.5em;
+  margin: 0 0 0 1em;
 }
 
 #product-grid{
@@ -296,6 +299,61 @@ button {
 #product-grid img{
   width: 100px;
 }
+#checkoutBtn{
+  background-color: #303030;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 1rem 1rem;
+  cursor: pointer;
+  align-self: center;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+
+#checkoutBtn:hover{
+  background-color: #30303072;
+}
+#formCheckout{
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+}
+#formCheckout fieldset{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap:1.5rem;
+  padding: 2rem 2rem;
+  width:95%;
+}
+#formCheckout h5{
+  margin: 0;
+}
+
+#formCheckout fieldset input{
+  width: 100%;
+  height: 40px;
+}
+
+#formCheckout div{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#formCheckout legend{
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+#total{
+  font-weight: 900;
+}
 
 @media screen and (min-width: 500px) {
   body {
@@ -308,6 +366,12 @@ button {
   .cart-card {
     font-size: inherit;
     grid-template-columns: 150px auto 15% 5%;
+  }
+  #formCheckout fieldset{
+    max-width: 500px;
+    width:60%;
+    padding: 2rem 3rem;
+
   }
 }
 
