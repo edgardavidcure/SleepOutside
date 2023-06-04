@@ -7,13 +7,8 @@ function convertToJson(res) {
   }
 }
 
-<<<<<<< HEAD:src/js/productData.mjs
-export async function getData(category) {
-  const response = await fetch(baseURL + `products/search/${category}`);
-=======
 export async function getProductsByCategory(category) {
   const response = await fetch(baseURL + `/products/search/${category}`);
->>>>>>> ca898d1003396d9abe4f9063e59b176ae2b0d824:src/js/externalServices.mjs
   const data = await convertToJson(response);
   return data.Result;
 }
