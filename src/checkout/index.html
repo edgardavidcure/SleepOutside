@@ -66,20 +66,20 @@
         <fieldset>
           <legend>Order Summary</legend>
           <div>
-            <p>Item Subtotal(2)</p>
-            <p>$269.98</p>
+            <p>Item Subtotal(<span id="num-items"></span>)</p>
+            <p id="cartTotal"></p>
           </div>            
           <div>
             <p>Shipping Estimate</p>
-            <p></p>
+            <p id="shipping"></p>
           </div>            
           <div>
             <p>Tax</p>
-            <p></p>
+            <p id="tax"></p>
           </div>            
-          <div>
-            <p id="total">Order Total</p>
-            <p></p>
+          <div id="total">
+            <p >Order Total</p>
+            <p id="orderTotal"></p>
           </div>            
         </fieldset>
         <input type="submit" value="Checkout" id="checkoutBtn" class="checkoutBtnAlign">
@@ -87,6 +87,6 @@
     </main>
 
     <footer id="main-footer"></footer>
-    <script src="../js/main.js" type="module"></script>
+    <script src="../js/checkout.js" type="module"></script>
   </body>
 </html>
