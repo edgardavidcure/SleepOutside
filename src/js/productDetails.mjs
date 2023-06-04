@@ -19,12 +19,14 @@ export async function addProductToCart(product) {
   products = cart;
   let idsArray = [];
   // add the ids of each product to the idsArray
-  cart.forEach(cartItem => {
-    idsArray.push(cartItem.Id)
-  });
+  if(cart){
+    cart.forEach(cartItem => {
+      idsArray.push(cartItem.Id)
+    });
+  } 
   // set a new property to calculate how many items are in the cart with a default of 1
   product.totalInCart = 1
-  if(idsArray.includes(product.Id) ){
+  if(idsArray.includes(product.Id)){
         for (let cartProduct of products){
           //count how many repeated products are in the cart
           let count = cartProduct.totalInCart

@@ -14,7 +14,7 @@ export async function getProductsByCategory(category) {
 }
 
 export async function findProductById(id) {
-  const product = await fetch(baseURL + `/product/${id}`);
+  const product = await fetch(baseURL + `product/${id}`);
   const data = await convertToJson(product);
   return data.Result;
 }
