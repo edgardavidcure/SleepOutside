@@ -60,6 +60,7 @@ export async function renderWithTemplate(
   }
 }
 
+
 export function setSuperscript() {
   const backpackSuperscript = document.getElementById("superscript");
   let cartItems = getLocalStorage("so-cart");
@@ -71,6 +72,8 @@ export function setSuperscript() {
     backpackSuperscript.innerText = totalItemsInCart
     });
     backpackSuperscript.style.display = "block";
+  } else{
+    backpackSuperscript.style.display = "none"
   }
 }
 

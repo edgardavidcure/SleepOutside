@@ -356,20 +356,29 @@ button {
 #total{
   font-weight: 900;
 }
-#quantity{
+.subtractQuantity, .addQuantity{
   display: flex;
   align-items: center;
-}
-#quantity p{
-  margin: unset;
-}
-.editQuantity{
-  width: 0.5rem;
   padding: 0.1em 0.5em;
-  display: flex;
+  width: 0.5rem;
   justify-content: center;
   background-color: #a4b8c4;
   color: #303030;
+
+}
+.subtractQuantity:hover, .addQuantity:hover{
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #303030;
+
+}
+.cart-card__quantity{
+  margin: unset;
+  display: flex;
+}
+.cart-card__quantity p {
+  margin: unset;
+  display: flex;
+  align-items: center;
 }
 
 @media screen and (min-width: 500px) {
