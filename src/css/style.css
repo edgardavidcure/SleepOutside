@@ -407,6 +407,7 @@ fieldset label h4{
   padding: 0.5rem 1rem;
   margin: 1rem 0;
   cursor: pointer;
+  font-weight: bolder;
 }
 
 #joinNews:hover{
