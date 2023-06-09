@@ -50,7 +50,11 @@ function cartItemTemplate(item,index) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">Qty: ${item.totalInCart}</p>
+  <div id="quantity" class="cart-card__quantity">
+      <button>-</button>
+      <p >Qty: ${item.totalInCart}</p>
+      <button>+</button>
+    </div>
   <p class="cart-card__price">$${item.FinalPrice}</p>
   <span class="cart-delete" data-id="${item.Id}" id="item-${index}">X</span>
 </li>`;

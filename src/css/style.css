@@ -246,11 +246,13 @@ button {
 .cart-card__price {
   grid-row: 2;
   grid-column: 3;
+  text-align: center;
 }
 .cart-delete {
   grid-row: 1;
   grid-column: 4;
   cursor: pointer;
+  text-align: center;
 }
 
 .hide{
@@ -353,6 +355,21 @@ button {
 }
 #total{
   font-weight: 900;
+}
+#quantity{
+  display: flex;
+  align-items: center;
+}
+#quantity p{
+  margin: unset;
+}
+.editQuantity{
+  width: 0.5rem;
+  padding: 0.1em 0.5em;
+  display: flex;
+  justify-content: center;
+  background-color: #a4b8c4;
+  color: #303030;
 }
 
 @media screen and (min-width: 500px) {
