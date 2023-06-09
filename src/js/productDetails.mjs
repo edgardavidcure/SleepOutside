@@ -1,6 +1,5 @@
 import { findProductById } from "./externalServices.mjs"
 import { discount, getLocalStorage, setLocalStorage } from "./utils.mjs";
-let products = [];
 
 
 
@@ -14,12 +13,15 @@ export default async function productDetails(productId){
 }
 
 export async function addProductToCart(product) {
+  let products = [];
+
   const cart = getLocalStorage("so-cart");
   // get any item in local storage and add to products array
-  products = cart;
   let idsArray = [];
   // add the ids of each product to the idsArray
-  if(cart){
+  if(cart != null){
+    products = cart;
+
     cart.forEach(cartItem => {
       idsArray.push(cartItem.Id)
     });
