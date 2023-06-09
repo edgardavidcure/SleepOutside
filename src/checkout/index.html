@@ -19,31 +19,31 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
       </section>
-      <form id="formCheckout" action="">
+      <form id="formCheckout" name="checkout" action="">
         <fieldset>
           <legend>Shipping</legend>
           <label for="fname"><h5>First Name</h5>
-            <input type="text" id="fname" name="fname">
+            <input type="text" id="fname" name="fname" required>
 
           </label>
           <label for="lname"><h5>Last Name</h5>
-            <input type="text" id="lname" name="lname">
+            <input type="text" id="lname" name="lname" required>
 
           </label>
           <label for="street"><h5>Street</h5>
-            <input type="text" id="street" name="street">
+            <input type="text" id="street" name="street" required>
 
           </label>
           <label for="city"><h5>City</h5>
-            <input type="text" id="city" name="city">
+            <input type="text" id="city" name="city" required>
 
           </label>
           <label for="state"><h5>State</h5>
-            <input type="text" id="state" name="state">
+            <input type="text" id="state" name="state" required>
 
           </label>
           <label for="zip"><h5>Zip</h5>
-            <input type="number" id="zip" name="zip">
+            <input type="number" id="zip" name="zip" required>
 
           </label>
         </fieldset>
@@ -51,15 +51,15 @@
           <legend>Payment</legend>
           <label for="cardNumber">
             <h5>Card Number</h5>
-            <input id="cardNumber" type="number" name="cardNumber">
+            <input id="cardNumber" type="number" name="cardNumber" required>
           </label>
           <label for="expiration">
             <h5>Expiration</h5>
-            <input id="expiration" type="date" name="expiration">
+            <input id="expiration" type="text" name="expiration" required>
           </label>
           <label for="code">
             <h5>Security Code</h5>
-            <input id="code" type="number" name="code">
+            <input id="code" type="number" name="code" required>
           </label>
           </fieldset>
         </fieldset>
