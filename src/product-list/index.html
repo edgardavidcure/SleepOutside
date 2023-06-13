@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sleep Outside | Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
@@ -19,6 +20,24 @@
         </ul>
       </section>
       <div id="alert-list"></div>
+      <div id="myModal" class="modal">
+          <div class="modal-content">
+          <a id="modalProduct" href="">
+
+              <span class="close">&times;</span>
+              <h3 id="productName"></h3>
+              <h2 class="divider" id="productNameWithoutBrand"></h2>
+              <span id="discount"></span>
+              <img id="productImage" class="" src="" alt="" />
+              <p class="product-card__price slashed divider" id="productSuggestedPrice"></p>
+              <p class="product-card__price" id="productFinalPrice"></p>
+              <p class="product__color" id="productColorName"></p>
+              <p class="product__description" id="productDescriptionHtmlSimple"></p>
+          </a>
+              
+          </div>
+
+      </div>
     </main>
     <footer id="main-footer"></footer>
     <script src="../js/product-list.js" type="module" ></script>
