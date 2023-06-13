@@ -160,6 +160,7 @@ button {
   border: 1px solid var(--light-grey);
   max-width: 250px;
   position: relative;
+  width: 250px;
 }
 .product-card a{
   display: flex;
