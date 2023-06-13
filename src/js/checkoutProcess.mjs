@@ -1,4 +1,4 @@
-import { getLocalStorage, calculateTotal } from "./utils.mjs";
+import { getLocalStorage, calculateTotal, setLocalStorage, alertMessage} from "./utils.mjs";
 import { checkout } from "./externalServices.mjs";
 
 // takes the items currently stored in the cart (localstorage) and returns them in a simplified form.
@@ -17,15 +17,15 @@ function packageItems(items) {
 
     // takes a form element and returns an object where the key is the "name" of the form input.
 function formDataToJSON(formElement) {
-    const formData = new FormData(formElement),
-      convertedJSON = {};
-  
-    formData.forEach(function (value, key) {
-      convertedJSON[key] = value;
-    });
-  
-    return convertedJSON;
-  }
+  const formData = new FormData(formElement),
+    convertedJSON = {};
+
+  formData.forEach(function (value, key) {
+    convertedJSON[key] = value;
+  });
+
+  return convertedJSON;
+}
 
 const checkoutProcess = {
     key: "",
@@ -86,12 +86,15 @@ const checkoutProcess = {
         json.tax = this.tax;
         json.shipping = this.shipping;
         json.items = packageItems(this.list);
-        console.log(json);
         try {
           const res = await checkout(json);
-          console.log(res);
+          setLocalStorage("so-cart", [])
+          location.assign("/checkout/success.html");
         } catch (err) {
           console.log(err);
+          for (let message in err.message) {
+            alertMessage(err.message[message]);
+          }
         }
       }
     
