@@ -28,9 +28,16 @@ function addQuantity(index) {
 }
 
 function renderCartTotal(cartTotal) {
-  cartTotalElement.innerHTML = `Total: <span>$${cartTotal}</span>`;
-  cartSection.classList.add("show");
-  cartSection.classList.remove("hide");
+  console.log(cartTotal)
+  if (cartTotal == 0){
+    cartSection.style.display = "none";
+    cartSection.classList.remove("show");
+  }else{
+    cartTotalElement.innerHTML = `Total: <span>$${cartTotal}</span>`;
+    cartSection.classList.add("show");
+    cartSection.classList.remove("hide");
+  }
+  
   loadHeaderFooter();
 
 }
@@ -76,6 +83,7 @@ function renderCartContents() {
   } else {
     productList.innerHTML = "<p>The cart is empty<span style='font-size:25px;'>&#128549;</span></p>";
     renderCartTotal(0);
+    
   }
 
 }
