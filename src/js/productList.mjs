@@ -32,7 +32,7 @@ function renderProductCard(item) {
     <h2 class="card__name">${item.NameWithoutBrand}</h2>
     <p class="product-card__price slashed">$ ${item.SuggestedRetailPrice !== item.FinalPrice ? (item.SuggestedRetailPrice).toFixed(2) : ""}</p>
     <p class="product-card__price">$ ${item.FinalPrice}</p>
-    <i class="fa fa-eye ${item.Id}"></i>
+    <i class="fa fa-eye" id="${item.Id}" title="Quick Lookup"></i>
     </a>
   </li>
     `;

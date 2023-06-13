@@ -145,7 +145,7 @@ button {
 .product-list {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: center;
   list-style-type: none;
   padding: 0;
 }
@@ -155,15 +155,24 @@ button {
 }
 /* Styles for product lists */
 .product-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex: 1 1 45%;
   margin: 0.25em;
   padding: 0.5em;
   border: 1px solid var(--light-grey);
   max-width: 250px;
+  position: relative;
 }
+.product-card a{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.product-card picture{
+  margin-top: 2rem;
+}
+
+
 .product-card h2,
 .product-card h3,
 .product-card p {
@@ -202,13 +211,15 @@ button {
   border: 2px solid red;
   padding: 5px;
   border-style: dashed;
+  top: 0;
 }
 /* End product list card */
 
 .product-detail {
+  position: relative;
   padding: 1em;
   max-width: 500px;
-  margin: auto;
+  margin: 2rem auto;
 }
 
 .product-detail img {
@@ -217,12 +228,19 @@ button {
 
 .fa{
   display: block;
-  z-index: -11;
+  z-index: 1;
   width: fit-content;
+  font-size: 1.2rem;
 }
 
 .fa:hover{
   color: #f0a868;
+  cursor: pointer !important;
+
+}
+
+.fa-eye{
+  cursor: pointer !important;
 }
 
 /* Start cart list card styles */
@@ -394,38 +412,43 @@ button {
   display: flex;
   align-items: center;
 }
-fieldset{
+
+#news-signup fieldset{
   border: none;
   border-top: 2px solid #f0a868;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-fieldset input{
+#news-signup fieldset input{
   padding: 0.2rem 0.5rem;
   font-size: 1em;
   margin-inline: 0.5rem;
 }
-fieldset label{
+#news-signup fieldset label{
   display: flex;
   align-items: center;
   justify-content: center;
 }
-fieldset label h4{
+#news-signup fieldset label h4{
   margin-block: 0.2rem;
 }
-#joinNews{
+#news-signup #joinNews{
   background-color: #f0a868;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1rem;
   margin: 1rem 0;
   cursor: pointer;
   font-weight: bolder;
 }
 
-#joinNews:hover{
-  background-color: hsl(28, 87%, 72%);
+#news-signup #joinNews:hover{
+  background-color: #a4b8c4;
+}
+
+.fa{
+  
 }
 
 .modal {
@@ -440,24 +463,22 @@ fieldset label h4{
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal iframe{
-  width: 100%;
-  height: 100%;
-}
+
 
 .modal-content {
+  display: flex;
   background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
+  margin: 10vh auto;
   border: 1px solid #888;
-  width: 80%;
-  height: 80%;
+  width: fit-content;
+  height: fit-content;
+  max-width: 600px;
 }
 
 .close {
   color: #aaa;
   float: right;
-  font-size: 28px;
+  font-size: 2.5rem;
   font-weight: bold;
 }
 
@@ -469,7 +490,26 @@ fieldset label h4{
 }
 
 
+#modalProduct{
+  padding: 20px;
+  flex-grow: 1;
+  color: initial;
+  text-decoration: none;
+  cursor: pointer !important;
 
+
+}
+
+#modalProduct .divider{
+  border-top: 2px solid var(--primary-color);
+  border-bottom: unset;
+  width: 100%;
+  padding-top: 10px;
+}
+footer {
+  font-size: var(--small-font);
+  padding: 1em;
+}
 
 
 @media screen and (min-width: 500px) {
@@ -490,9 +530,9 @@ fieldset label h4{
     padding: 2rem 3rem;
 
   }
+  .product-list{
+    justify-content: space-between;
+  }
 }
 
-footer {
-  font-size: var(--small-font);
-  padding: 1em;
-}
+
