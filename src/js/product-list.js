@@ -30,7 +30,7 @@ function renderModal(product){
     document.getElementById("productFinalPrice").innerHTML = `$${product.FinalPrice}`;
     document.getElementById("productColorName").innerHTML = product.Colors[0].ColorName;
     document.getElementById("productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
-    modalProduct.setAttribute( "href", `../product_pages/index.html?product=${product.Id}`)
+    modalProduct.setAttribute("href", `../product_pages/index.html?product=${product.Id}`)
     if(product.SuggestedRetailPrice != product.FinalPrice){
       const discountSpan = document.getElementById("discount");
       discountSpan.setAttribute("class", "discount");
@@ -65,3 +65,41 @@ closeBtn.addEventListener("click", (event) => {
       modal.style.display = "none";
     }
   }
+
+  //Sort Feature
+  const nameSortButton = document.getElementById("sortName");
+  const priceSortButton = document.getElementById("sortFinalPrice");
+
+  nameSortButton.addEventListener("click", (e) =>{
+    let isActive = nameSortButton.classList.contains("sortButtonActive");
+
+    if(isActive){
+      nameSortButton.classList.remove("sortButtonActive");
+      productList(productsList, category);
+    }else{
+      if(priceSortButton.classList.contains("sortButtonActive")){
+        priceSortButton.classList.remove("sortButtonActive");
+      }
+      nameSortButton.classList.add("sortButtonActive");
+      productList(productsList, category,"Name");
+    }
+
+  })
+
+  priceSortButton.addEventListener("click", (e) =>{
+    let isActive = priceSortButton.classList.contains("sortButtonActive");
+
+    if(isActive){
+      priceSortButton.classList.remove("sortButtonActive");
+      productList(productsList, category);
+    }else{
+      if(nameSortButton.classList.contains("sortButtonActive")){
+        nameSortButton.classList.remove("sortButtonActive");
+      }
+      priceSortButton.classList.add("sortButtonActive");
+      productList(productsList, category,"Price");
+    }
+
+  })
+ 
+  
