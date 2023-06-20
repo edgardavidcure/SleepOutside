@@ -542,6 +542,45 @@ footer {
   padding: 1em;
 }
 
+.box{
+  position: relative;
+  width: fit-content;
+}
+
+.box .input {
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+  background: none;
+  border: 4px solid #FB6A5A;
+  border-radius: 50px;
+  box-sizing: border-box;
+  font-family: Comic Sans MS;
+  font-size: 20px;
+  color: #000;
+  outline: none;
+  transition: .5s;
+}
+.box:hover input{
+  width: 350px;
+  background: #FFF;
+  border-radius: 10px;
+}
+.box i{
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translate(-50%,-50%);
+  font-size: 20px;
+  color: #FB6A5A;
+  transition: .2s;
+}
+.box:hover i{
+  opacity: 0;
+  z-index: -1;
+}
+
+
 
 @media screen and (min-width: 500px) {
   body {
