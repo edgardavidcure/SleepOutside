@@ -13,6 +13,7 @@ export default async function productList(selector, category) {
       (item) => item.Id != "989CG" && item.Id != "880RT"
     );
   }
+  breadcrumb(category,products.length);
   renderListWithTemplate(renderProductCard, selector, products);
 }
 
@@ -37,6 +38,13 @@ function renderProductCard(item) {
   </li>
     `;
   return newItem;
+}
+
+function breadcrumb(type,qty){
+  const category = document.getElementById("category_bread");
+  const qtyItem = document.getElementById("totalQTY");
+  category.innerHTML = capitalize(type);
+  qtyItem.innerHTML = `${qty} items`;
 }
 
 
