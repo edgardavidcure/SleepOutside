@@ -2,7 +2,11 @@ import { getProductsByCategory } from "./externalServices.mjs";
 import { discount, renderListWithTemplate,capitalize } from "./utils.mjs";
 import Alert from "./alerts.js";
 
+
+export default async function productList(selector, category, sort) {
+=======
 export default async function productList(selector, category, search) {
+
   document.getElementById("categoryName").innerHTML = capitalize(`${category}`);
   let alert = new Alert
   document.getElementById("alert-list").innerHTML = await alert.alertsHTml();
@@ -14,6 +18,29 @@ export default async function productList(selector, category, search) {
     );
   }
 
+
+  if(sort){
+    if(sort === "Name"){
+      products.sort((a, b) => {
+        let fa = a.NameWithoutBrand.toLowerCase(),
+            fb = b.NameWithoutBrand.toLowerCase();
+    
+        if (fa < fb) {
+            return -1;
+        }
+        if (fa > fb) {
+            return 1;
+        }
+        return 0;
+    });
+    console.table(products)
+    }else if(sort == "Price"){ 
+      products.sort((a, b) => a.FinalPrice - b.FinalPrice);
+     }
+  }
+
+
+
   breadcrumb(category,products.length);
 
 
@@ -22,6 +49,7 @@ export default async function productList(selector, category, search) {
       item => item.Name.toUpperCase().includes(search.toUpperCase())
     );
   }
+
 
 
 
