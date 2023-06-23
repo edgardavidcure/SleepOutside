@@ -45,6 +45,7 @@ function renderProductCard(item) {
     <p class="product-card__price slashed">$ ${item.SuggestedRetailPrice !== item.FinalPrice ? (item.SuggestedRetailPrice).toFixed(2) : ""}</p>
     <p class="product-card__price">$ ${item.FinalPrice}</p>
     <i class="fa fa-eye" id="${item.Id}" title="Quick Lookup"></i>
+    <i class="fa-light fa-heart" style="color: #ff2600;"></i>
     </a>
   </li>
     `;
