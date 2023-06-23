@@ -30,7 +30,7 @@ function renderModal(product){
     document.getElementById("productFinalPrice").innerHTML = `$${product.FinalPrice}`;
     document.getElementById("productColorName").innerHTML = product.Colors[0].ColorName;
     document.getElementById("productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
-    modalProduct.setAttribute( "href", `../product_pages/index.html?product=${product.Id}`)
+    modalProduct.setAttribute("href", `../product_pages/index.html?product=${product.Id}`)
     if(product.SuggestedRetailPrice != product.FinalPrice){
       const discountSpan = document.getElementById("discount");
       discountSpan.setAttribute("class", "discount");

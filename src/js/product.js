@@ -5,6 +5,7 @@ import { setSuperscript, getParam, loadHeaderFooter } from "./utils.mjs";
 const productId = getParam("product");
 const addToCartButton = document.getElementById("addToCart");
 productDetails(productId);
+loadHeaderFooter();
 
 // add to cart button event handler
 async function addToCartHandler(e) {
@@ -13,9 +14,9 @@ async function addToCartHandler(e) {
   setSuperscript();
   document.querySelector(".cart").animate([
     // key frames
-    { transform: 'translateX(0px)' },
-    { transform: 'translateX(-10px)' },
-    { transform: 'translateX(10px)' }
+    { transform: "translateX(0px)" },
+    { transform: "translateX(-10px)" },
+    { transform: "translateX(10px)" }
   ], {
     // sync options
     duration: 200,
@@ -27,6 +28,3 @@ async function addToCartHandler(e) {
 
 addToCartButton.addEventListener("click", addToCartHandler);
 
-// update the superscript on cart icon
-
-loadHeaderFooter();

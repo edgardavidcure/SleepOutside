@@ -6,7 +6,7 @@ import { discount, getLocalStorage, setLocalStorage } from "./utils.mjs";
 export default async function productDetails(productId){
   const product = await findProductById(productId);
   if (product){
-    renderProductDetails(product)
+    renderProductDetails(product);
   } else {
     renderProductNotFound();
   }
@@ -80,6 +80,23 @@ function renderProductNotFound(){
   productSection.insertAdjacentHTML("afterbegin", notFoundDetails);
 
 
+}
+
+function renderComments(productName){
+  let comments = getLocalStorage("comments");
+  if(comments){
+    comments = comments.filter((item) => item.Name == productName);
+    if(comments.length != 0){
+      let commentsArray = [];
+      comments.map((item) =>{
+        commentsArray.push(`<li>${item}</li>`);
+      });
+      const list = document.getElementById("oldComments");
+      for(let comment in commentsArray){
+        list.appendChild(comment);
+      }
+    }
+  }
 }
 
 
