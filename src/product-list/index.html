@@ -10,11 +10,21 @@
   <body>
     <header class="divider" id="main-header">
     </header>
+    <nav class="breadcrumbs">
+      <a href="../index.html" class="breadcrumbs__item">Home</a>
+      <a href="#" id="category_bread" class="breadcrumbs__item"></a> 
+      <a href="#" id="totalQTY" class="breadcrumbs__item is-active"></a>
+    </nav>
     <main class="divider">
       
     
       <section class="products">
         <h2>Top Products: <span id="categoryName"></span></h2>
+        <div class="box">
+              <input type="text" class="input" id="searchBar"  name="txt" onmouseout="this.value = ''; this.blur();">
+          <i class="fa fa-search"></i>
+      
+      </div>
         <ul class="product-list">
           
         </ul>
