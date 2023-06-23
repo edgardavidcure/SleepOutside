@@ -13,9 +13,9 @@ async function addToCartHandler(e) {
   setSuperscript();
   document.querySelector(".cart").animate([
     // key frames
-    { transform: 'translateX(0px)' },
-    { transform: 'translateX(-10px)' },
-    { transform: 'translateX(10px)' }
+    { transform: "translateX(0px)" },
+    { transform: "translateX(-10px)" },
+    { transform: "translateX(10px)" }
   ], {
     // sync options
     duration: 200,
