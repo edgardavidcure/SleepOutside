@@ -3,9 +3,7 @@ import { discount, renderListWithTemplate,capitalize } from "./utils.mjs";
 import Alert from "./alerts.js";
 
 
-export default async function productList(selector, category, sort) {
-=======
-export default async function productList(selector, category, search) {
+export default async function productList(selector, category, search, sort) {
 
   document.getElementById("categoryName").innerHTML = capitalize(`${category}`);
   let alert = new Alert

@@ -77,13 +77,13 @@ closeBtn.addEventListener("click", (event) => {
 
     if(isActive){
       nameSortButton.classList.remove("sortButtonActive");
-      productList(productsList, category);
+      productList(productsList,category);
     }else{
       if(priceSortButton.classList.contains("sortButtonActive")){
         priceSortButton.classList.remove("sortButtonActive");
       }
       nameSortButton.classList.add("sortButtonActive");
-      productList(productsList, category,"Name");
+      productList(productsList, category,"" , "Name");
     }
 
   })
@@ -99,7 +99,7 @@ closeBtn.addEventListener("click", (event) => {
         nameSortButton.classList.remove("sortButtonActive");
       }
       priceSortButton.classList.add("sortButtonActive");
-      productList(productsList, category,"Price");
+      productList(productsList, category,"", "Price");
     }
 
   })
