@@ -14,11 +14,15 @@ export default async function productList(selector, category, search) {
     );
   }
 
+  breadcrumb(category,products.length);
+
+
   if(search && search != ""){
     products = products.filter(
       item => item.Name.toUpperCase().includes(search.toUpperCase())
     );
   }
+
 
 
   renderListWithTemplate(renderProductCard, selector, products);
@@ -45,6 +49,13 @@ function renderProductCard(item) {
   </li>
     `;
   return newItem;
+}
+
+function breadcrumb(type,qty){
+  const category = document.getElementById("category_bread");
+  const qtyItem = document.getElementById("totalQTY");
+  category.innerHTML = capitalize(type);
+  qtyItem.innerHTML = `${qty} items`;
 }
 
 
