@@ -7,7 +7,8 @@ const category = getParam("type")
 const closeBtn = document.querySelector(".close");
 const modal = document.getElementById("myModal");
 const modalContent = document.getElementById("modalContent");
-const modalProduct = document.getElementById("modalProduct")
+const modalProduct = document.getElementById("modalProduct");
+const searchInput = document.getElementById("searchBar");
 
 productList(productsList, category);
 loadHeaderFooter();
@@ -65,3 +66,9 @@ closeBtn.addEventListener("click", (event) => {
       modal.style.display = "none";
     }
   }
+
+  searchInput.addEventListener("input",(e)=>{
+    console.log("Changes: ", e.target.value);
+    productList(productsList, category, e.target.value);
+
+  })
