@@ -2,7 +2,7 @@ import { getProductsByCategory } from "./externalServices.mjs";
 import { discount, renderListWithTemplate,capitalize } from "./utils.mjs";
 import Alert from "./alerts.js";
 
-export default async function productList(selector, category) {
+export default async function productList(selector, category, search) {
   document.getElementById("categoryName").innerHTML = capitalize(`${category}`);
   let alert = new Alert
   document.getElementById("alert-list").innerHTML = await alert.alertsHTml();
@@ -13,6 +13,18 @@ export default async function productList(selector, category) {
       (item) => item.Id != "989CG" && item.Id != "880RT"
     );
   }
+
+  breadcrumb(category,products.length);
+
+
+  if(search && search != ""){
+    products = products.filter(
+      item => item.Name.toUpperCase().includes(search.toUpperCase())
+    );
+  }
+
+
+
   renderListWithTemplate(renderProductCard, selector, products);
 }
 
@@ -37,6 +49,13 @@ function renderProductCard(item) {
   </li>
     `;
   return newItem;
+}
+
+function breadcrumb(type,qty){
+  const category = document.getElementById("category_bread");
+  const qtyItem = document.getElementById("totalQTY");
+  category.innerHTML = capitalize(type);
+  qtyItem.innerHTML = `${qty} items`;
 }
 
 
