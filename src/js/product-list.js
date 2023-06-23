@@ -1,6 +1,7 @@
-import { loadHeaderFooter, getParam, discount } from "./utils.mjs";
-import productList from "./productList.mjs";
+import { loadHeaderFooter, getParam, discount, setLocalStorage, getLocalStorage } from "./utils.mjs";
+import  productList from "./productList.mjs";
 import { getProductsByCategory } from "./externalServices.mjs";
+
 
 const productsList = document.querySelector(".product-list");
 const category = getParam("type")
@@ -9,7 +10,6 @@ const modal = document.getElementById("myModal");
 const modalContent = document.getElementById("modalContent");
 const modalProduct = document.getElementById("modalProduct");
 const searchInput = document.getElementById("searchBar");
-
 productList(productsList, category);
 loadHeaderFooter();
 
@@ -41,7 +41,51 @@ function renderModal(product){
     }
     
 }
-  
+
+
+function checkItemIsWished(product, source){
+  if (product.wished == true){
+    source.classList.add("fa-solid")
+  } else{
+    source.classList.remove("fa-solid")
+  }
+}
+
+
+
+
+
+
+function addProductToWishlist(product, source) {
+  let products = []
+  let wishlist = getLocalStorage("so-wishlist");
+
+  if (wishlist == null){
+    wishlist = products
+  } else {
+    products = wishlist
+  }
+  const isProductInWishlist = wishlist.some((p) => p.Id === product.Id);
+  console.log(isProductInWishlist)
+  if (isProductInWishlist) {
+    // Remove the item from the wishlist
+    let findItemIndex = products.findIndex((item) => item.Id == product.Id)
+    products.splice(findItemIndex, 1)
+    product.wished = false;
+  } else {
+    // Add the item to the wishlist
+    product.wished = true;
+    products.push(product);
+  }
+  checkItemIsWished(product, source);
+
+  setLocalStorage("so-wishlist", products);
+}
+
+
+
+
+
 
 
 productsList.addEventListener("click", async (event) => {
@@ -52,7 +96,18 @@ productsList.addEventListener("click", async (event) => {
     renderModal(product)
     modal.style.display = "block"
     
-    }});
+    } else if (event.target.classList.contains("fa-heart")){
+      const id = event.target.id;
+      event.preventDefault();
+      const [product] = await getProductData(id);
+      addProductToWishlist(product, event.target)
+      checkItemIsWished(product, event.target)
+
+    }
+  
+  });
+
+
 closeBtn.addEventListener("click", (event) => {
   if (event.target.classList.contains("close")){
     event.preventDefault();
@@ -60,6 +115,7 @@ closeBtn.addEventListener("click", (event) => {
 
   }
   });
+
 
   window.onclick = function(event) {
     if (event.target == modal) {
@@ -72,3 +128,5 @@ closeBtn.addEventListener("click", (event) => {
     productList(productsList, category, e.target.value);
 
   })
+
+

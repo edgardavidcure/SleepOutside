@@ -107,5 +107,15 @@ function cartItemTemplate(item, index) {
   </li>`;
 }
 
+function wishlistTemplate(){
+  return `<li class="wish-card">
+    <a href="../product_pages/index.html?product=${item.Id}" class="cart-card__image">
+      <img src="${item.Images.PrimarySmall}" alt="${item.Name}">
+      <h5></h5>
+      <p></p>
+      <p></p>
+    </a>
+  </li>`
+}
 loadHeaderFooter();
 renderCartContents();

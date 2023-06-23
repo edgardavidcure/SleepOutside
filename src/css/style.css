@@ -212,7 +212,7 @@ button {
   border: 2px solid red;
   padding: 5px;
   border-style: dashed;
-  top: 0;
+  top: 10px;
 }
 /* End product list card */
 
@@ -527,7 +527,7 @@ button {
   color: initial;
   text-decoration: none;
   cursor: pointer !important;
-
+  position: relative;
 
 }
 
