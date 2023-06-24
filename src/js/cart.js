@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage, loadHeaderFooter, calculateTotal, setSuperscript} from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, loadHeaderFooter, calculateTotal, setSuperscript, capitalize} from "./utils.mjs";
 const cartItems = getLocalStorage("so-cart");
 const cartSection = document.querySelector(".cart-footer");
 const cartTotalElement = document.querySelector(".cart-total");
@@ -28,7 +28,6 @@ function addQuantity(index) {
 }
 
 function renderCartTotal(cartTotal) {
-  console.log(cartTotal)
   if (cartTotal == 0){
     cartSection.style.display = "none";
     cartSection.classList.remove("show");
@@ -107,15 +106,33 @@ function cartItemTemplate(item, index) {
   </li>`;
 }
 
-function wishlistTemplate(){
+function wishlistTemplate(item){
   return `<li class="wish-card">
-    <a href="../product_pages/index.html?product=${item.Id}" class="cart-card__image">
-      <img src="${item.Images.PrimarySmall}" alt="${item.Name}">
-      <h5></h5>
-      <p></p>
-      <p></p>
+    <a href="../product_pages/index.html?product=${item.Id}" class="wishlistLink">
+      <img src="${item.Images.PrimaryMedium}" alt="${item.Name}">
+      <h5>${item.NameWithoutBrand}</h5>
+      <h6>${item.Brand.Name}</h6>
+      <p>$${item.FinalPrice}</p>
     </a>
   </li>`
 }
+
+function renderWishContents() {
+
+  const wishlistItems = getLocalStorage("so-wishlist");
+  const productList = document.querySelector(".wishlist");
+  console.log(wishlistItems)
+  if (wishlistItems && wishlistItems.length > 0) {
+    const htmlItems = wishlistItems.map((item) => wishlistTemplate(item));
+    productList.innerHTML = htmlItems.join("");
+
+  } else {
+    productList.innerHTML = "<p>The cart is empty<span style='font-size:25px;'>&#128549;</span></p>";
+    renderCartTotal(0);
+    
+  }
+
+}
 loadHeaderFooter();
 renderCartContents();
+renderWishContents();
