@@ -232,6 +232,9 @@ button {
   z-index: 1;
   width: fit-content;
   font-size: 1.2rem;
+  position: absolute;
+  right: 10px;
+  top: 1rem;
 }
 
 .fa:hover{
@@ -243,7 +246,11 @@ button {
 .fa-eye{
   cursor: pointer !important;
 }
-
+.fa-heart{
+  position: absolute;
+  bottom: 1.5rem;
+  right: 10px;
+}
 /* Start cart list card styles */
 .cart-card {
   display: grid;
@@ -453,9 +460,7 @@ button {
   height: 150px;
 }
 
-.closeBtn{
-  
-}
+
 
 /* alert styles */
 .alert {
