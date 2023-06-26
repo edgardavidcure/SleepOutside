@@ -47,11 +47,12 @@ export async function loginRequest(creds){
 
 export async function getOrders(){
   const token = getLocalStorage("so-token")
+  const url = "https://wdd330-backend.onrender.com"
   const options = {
     method: "GET",
     headers: {
       "Authorization": `Bearer ${token}`
     },
   };
-  return await fetch(ordersURL + "/orders/", options).then(convertToJson);
+  return await fetch(url + "/orders/", options).then(convertToJson);
 }
