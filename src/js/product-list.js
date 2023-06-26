@@ -123,10 +123,48 @@ closeBtn.addEventListener("click", (event) => {
     }
   }
 
+
+  //Sort Feature
+  const nameSortButton = document.getElementById("sortName");
+  const priceSortButton = document.getElementById("sortFinalPrice");
+
+  nameSortButton.addEventListener("click", (e) =>{
+    let isActive = nameSortButton.classList.contains("sortButtonActive");
+
+    if(isActive){
+      nameSortButton.classList.remove("sortButtonActive");
+      productList(productsList,category);
+    }else{
+      if(priceSortButton.classList.contains("sortButtonActive")){
+        priceSortButton.classList.remove("sortButtonActive");
+      }
+      nameSortButton.classList.add("sortButtonActive");
+      productList(productsList, category,"" , "Name");
+    }
+
+  })
+
+  priceSortButton.addEventListener("click", (e) =>{
+    let isActive = priceSortButton.classList.contains("sortButtonActive");
+
+    if(isActive){
+      priceSortButton.classList.remove("sortButtonActive");
+      productList(productsList, category);
+    }else{
+      if(nameSortButton.classList.contains("sortButtonActive")){
+        nameSortButton.classList.remove("sortButtonActive");
+      }
+      priceSortButton.classList.add("sortButtonActive");
+      productList(productsList, category,"", "Price");
+    }
+
+  })
+ 
+  
+
   searchInput.addEventListener("input",(e)=>{
     console.log("Changes: ", e.target.value);
     productList(productsList, category, e.target.value);
 
   })
-
 
