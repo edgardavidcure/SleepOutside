@@ -681,10 +681,13 @@ footer {
   padding-inline: 0.5em;
 
 }
-.container{
+#slidesContainer{
   overflow-x: scroll;
   position: relative;
 
+}
+.container{
+  overflow-x: scroll;
 }
 
 .wishlist{
@@ -710,11 +713,12 @@ footer {
 .next {
   cursor: pointer;
   position: absolute;
-  top: 40%;
+  top: 60%;
   width: auto;
-  padding: 16px;
+  padding: 10px;
   margin-top: -50px;
   color: white;
+  background-color: rgba(0, 0, 0, 0.8);
   font-weight: bold;
   font-size: 20px;
   border-radius: 0 3px 3px 0;
@@ -731,7 +735,7 @@ footer {
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover,
 .next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(121, 121, 121, 0.8);
 }
 
 
