@@ -1,5 +1,5 @@
 import { getProductsByCategory } from "./externalServices.mjs";
-import { discount, renderListWithTemplate,capitalize } from "./utils.mjs";
+import { discount, renderListWithTemplate,capitalize, getLocalStorage } from "./utils.mjs";
 import Alert from "./alerts.js";
 
 
@@ -51,6 +51,7 @@ export default async function productList(selector, category, search, sort) {
 
 
   renderListWithTemplate(renderProductCard, selector, products);
+  updateIconColor()
 }
 
 function renderProductCard(item) {
@@ -70,6 +71,7 @@ function renderProductCard(item) {
     <p class="product-card__price slashed">$ ${item.SuggestedRetailPrice !== item.FinalPrice ? (item.SuggestedRetailPrice).toFixed(2) : ""}</p>
     <p class="product-card__price">$ ${item.FinalPrice}</p>
     <i class="fa fa-eye" id="${item.Id}" title="Quick Lookup"></i>
+    <i class="fa-regular fa-heart" style="color: #ff2600;" id="${item.Id}" title="Add product to wishlist"></i>
     </a>
   </li>
     `;
@@ -83,4 +85,20 @@ function breadcrumb(type,qty){
   qtyItem.innerHTML = `${qty} items`;
 }
 
+function updateIconColor() {
+  const wishlistItems = getLocalStorage("so-wishlist") || [];
+  const heartIcons = Array.from(document.getElementsByClassName("fa-heart"));
+
+  heartIcons.forEach((icon) => {
+    const id = icon.id;
+
+    const isWishlisted = wishlistItems.some((item) => item.Id === id && item.wished);
+
+    if (isWishlisted) {
+      icon.classList.add("fa-solid");
+    } else {
+      icon.classList.remove("fa-solid");
+    }
+  });
+}
 

@@ -55,4 +55,5 @@ export async function getOrders(){
     },
   };
   return await fetch(url + "/orders/", options).then(convertToJson);
+  return await fetch(baseURL + "/orders/", options).then(convertToJson);
 }
