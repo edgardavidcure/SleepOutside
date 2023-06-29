@@ -31,21 +31,5 @@ export async function orders() {
 
 
 
-      const result = ordersData.reduce((groupedOrders, order) => {
-        const { fname, lname } = order;
-        const fullName = `${fname} ${lname}`;
-        
-        if (!groupedOrders[fullName]) {
-          groupedOrders[fullName] = [];
-        }
-        groupedOrders[fullName].push(order);
-        return groupedOrders;
-      }, {});
-      
-      console.log(result);
-    }
-  }
-
-
   
 

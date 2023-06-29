@@ -1,9 +1,10 @@
 import { findProductById } from "./externalServices.mjs";
-import productDetails from "./productDetails.mjs";
+import productDetails, { addComment } from "./productDetails.mjs";
 import { addProductToCart } from "./productDetails.mjs";
 import { setSuperscript, getParam, loadHeaderFooter } from "./utils.mjs";
 const productId = getParam("product");
 const addToCartButton = document.getElementById("addToCart");
+const commentForm = document.getElementById("commentForm")
 productDetails(productId);
 loadHeaderFooter();
 
@@ -25,6 +26,13 @@ async function addToCartHandler(e) {
 }
 
 // add listener to Add to Cart button
-
 addToCartButton.addEventListener("click", addToCartHandler);
+
+//add listener to Add coment button
+commentForm.addEventListener("submit", function(e){
+  e.preventDefault();
+  let comment = document.getElementById("newComment").value;
+  addComment(comment, productId);
+})
+
 
