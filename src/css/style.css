@@ -212,7 +212,7 @@ button {
   border: 2px solid red;
   padding: 5px;
   border-style: dashed;
-  top: 0;
+  top: 10px;
 }
 /* End product list card */
 
@@ -232,6 +232,9 @@ button {
   z-index: 1;
   width: fit-content;
   font-size: 1.2rem;
+  position: absolute;
+  right: 10px;
+  top: 1rem;
 }
 
 .fa:hover{
@@ -243,11 +246,15 @@ button {
 .fa-eye{
   cursor: pointer !important;
 }
-
+.fa-heart{
+  position: absolute;
+  bottom: 1.5rem;
+  right: 10px;
+}
 /* Start cart list card styles */
 .cart-card {
   display: grid;
-  grid-template-columns: 25% auto 15%;
+  grid-template-columns: 25% auto 30%;
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
@@ -453,9 +460,7 @@ button {
   height: 150px;
 }
 
-.closeBtn{
-  
-}
+
 
 /* alert styles */
 .alert {
@@ -527,7 +532,7 @@ button {
   color: initial;
   text-decoration: none;
   cursor: pointer !important;
-
+  position: relative;
 
 }
 
@@ -669,6 +674,26 @@ footer {
   opacity: 0;
   z-index: -1;
 }
+.wishlistSection{
+  border-top: 2px solid #f0a868;
+  margin-top: 5rem;
+  padding-top: 2rem;
+  padding-inline: 0.5em;
+
+}
+.container{
+  overflow-x: scroll;
+  position: relative;
+
+}
+
+.wishlist{
+  display: flex;
+  list-style: none;
+  width: 100%;
+  gap: 2rem;
+  padding: 0;
+}
 
 /* Hide the images by default */
 .mySlides {
@@ -727,9 +752,35 @@ footer {
   opacity: 0.6;
 }
 
-.active,
-.demo:hover {
+.active,.demo:hover {
   opacity: 1;
+}
+.wishlist a{
+  text-decoration: none;
+  color: #303030;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  padding: 0.5rem 1rem;
+
+  
+
+}
+.wish-card{
+  min-width: 200px;
+  min-height: 100%;
+  border: 1px solid #cbd2d9;
+  transition: 0.2s ease-in;
+}
+.wish-card:hover{
+  background-color: #eeeeee;
+  transition: 0.2s ease-in;
+}
+.wishlistLink h6{
+  margin: 0;
+  font-size: 0.9rem;
 }
 
 
@@ -755,5 +806,3 @@ footer {
     justify-content: space-between;
   }
 }
-
-
