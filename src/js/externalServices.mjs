@@ -1,6 +1,7 @@
 import { getLocalStorage } from "./utils.mjs";
 
 const baseURL = import.meta.env.VITE_SERVER_URL;
+const ordersURL = "https://wdd330-backend.onrender.com"
 async function convertToJson(res) {
   const data = await res.json();
   if (res.ok) {
@@ -46,11 +47,13 @@ export async function loginRequest(creds){
 
 export async function getOrders(){
   const token = getLocalStorage("so-token")
+  const url = "https://wdd330-backend.onrender.com"
   const options = {
     method: "GET",
     headers: {
       "Authorization": `Bearer ${token}`
     },
   };
+  return await fetch(url + "/orders/", options).then(convertToJson);
   return await fetch(baseURL + "/orders/", options).then(convertToJson);
 }
