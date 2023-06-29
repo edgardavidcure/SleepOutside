@@ -50,7 +50,6 @@ export default async function productList(selector, category, search, sort) {
 
 
 
-
   renderListWithTemplate(renderProductCard, selector, products);
   updateIconColor()
 }
