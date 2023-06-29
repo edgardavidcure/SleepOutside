@@ -37,7 +37,19 @@ export default async function productList(selector, category, search, sort) {
      }
   }
 
-
+  function checkInput(input) {
+    if (input.value !== "") {
+      input.classList.add("active");
+    } else {
+      input.classList.remove("active");
+    }
+  }
+  
+  const inputElement = document.getElementById("searchBar");
+  
+  inputElement.addEventListener("input", function() {
+    checkInput(this);
+  });
 
   breadcrumb(category,products.length);
 
