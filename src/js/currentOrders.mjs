@@ -41,8 +41,7 @@ export async function orders() {
         return groupedOrders;
       }, {});
       
-    }
-  }
+   
 
 
   
