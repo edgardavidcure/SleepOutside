@@ -10,11 +10,30 @@
   <body>
     <header class="divider" id="main-header">
     </header>
+    <nav class="breadcrumbs">
+      <a href="../index.html" class="breadcrumbs__item">Home</a>
+      <a href="#" id="category_bread" class="breadcrumbs__item"></a> 
+      <a href="#" id="totalQTY" class="breadcrumbs__item is-active"></a>
+    </nav>
     <main class="divider">
       
     
       <section class="products">
         <h2>Top Products: <span id="categoryName"></span></h2>
+
+        <div>
+          <h5>Sort by:</h5>
+          <div id="sortButtonsRow">
+            <button id="sortName">Name</button>
+            <button id="sortFinalPrice">Price</button>
+          </div>
+        </div>
+
+        <div class="box">
+              <input type="text" class="input" id="searchBar"  name="txt" onmouseout="this.value = ''; this.blur();">
+          <i class="fa fa-search"></i>
+      
+      </div>
         <ul class="product-list">
           
         </ul>
@@ -41,5 +60,6 @@
     </main>
     <footer id="main-footer"></footer>
     <script src="../js/product-list.js" type="module" ></script>
+    <script src="https://kit.fontawesome.com/c20db622e4.js" crossorigin="anonymous"></script>
   </body>
 </html>

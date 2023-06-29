@@ -1,8 +1,10 @@
 import { getProductsByCategory } from "./externalServices.mjs";
-import { discount, renderListWithTemplate,capitalize } from "./utils.mjs";
+import { discount, renderListWithTemplate,capitalize, getLocalStorage } from "./utils.mjs";
 import Alert from "./alerts.js";
 
-export default async function productList(selector, category) {
+
+export default async function productList(selector, category, search, sort) {
+
   document.getElementById("categoryName").innerHTML = capitalize(`${category}`);
   let alert = new Alert
   document.getElementById("alert-list").innerHTML = await alert.alertsHTml();
@@ -13,7 +15,43 @@ export default async function productList(selector, category) {
       (item) => item.Id != "989CG" && item.Id != "880RT"
     );
   }
+
+
+  if(sort){
+    if(sort === "Name"){
+      products.sort((a, b) => {
+        let fa = a.NameWithoutBrand.toLowerCase(),
+            fb = b.NameWithoutBrand.toLowerCase();
+    
+        if (fa < fb) {
+            return -1;
+        }
+        if (fa > fb) {
+            return 1;
+        }
+        return 0;
+    });
+    console.table(products)
+    }else if(sort == "Price"){ 
+      products.sort((a, b) => a.FinalPrice - b.FinalPrice);
+     }
+  }
+
+
+
+  breadcrumb(category,products.length);
+
+
+  if(search && search != ""){
+    products = products.filter(
+      item => item.Name.toUpperCase().includes(search.toUpperCase())
+    );
+  }
+
+
+
   renderListWithTemplate(renderProductCard, selector, products);
+  updateIconColor()
 }
 
 function renderProductCard(item) {
@@ -33,10 +71,34 @@ function renderProductCard(item) {
     <p class="product-card__price slashed">$ ${item.SuggestedRetailPrice !== item.FinalPrice ? (item.SuggestedRetailPrice).toFixed(2) : ""}</p>
     <p class="product-card__price">$ ${item.FinalPrice}</p>
     <i class="fa fa-eye" id="${item.Id}" title="Quick Lookup"></i>
+    <i class="fa-regular fa-heart" style="color: #ff2600;" id="${item.Id}" title="Add product to wishlist"></i>
     </a>
   </li>
     `;
   return newItem;
 }
 
+function breadcrumb(type,qty){
+  const category = document.getElementById("category_bread");
+  const qtyItem = document.getElementById("totalQTY");
+  category.innerHTML = capitalize(type);
+  qtyItem.innerHTML = `${qty} items`;
+}
+
+function updateIconColor() {
+  const wishlistItems = getLocalStorage("so-wishlist") || [];
+  const heartIcons = Array.from(document.getElementsByClassName("fa-heart"));
+
+  heartIcons.forEach((icon) => {
+    const id = icon.id;
+
+    const isWishlisted = wishlistItems.some((item) => item.Id === id && item.wished);
+
+    if (isWishlisted) {
+      icon.classList.add("fa-solid");
+    } else {
+      icon.classList.remove("fa-solid");
+    }
+  });
+}
 
