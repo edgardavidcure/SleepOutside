@@ -1,6 +1,7 @@
 import { getProductsByCategory } from "./externalServices.mjs";
 import { discount, renderListWithTemplate,capitalize } from "./utils.mjs";
 import Alert from "./alerts.js";
+import productDetails from "./productDetails.mjs";
 
 
 export default async function productList(selector, category, search, sort) {
@@ -47,7 +48,6 @@ export default async function productList(selector, category, search, sort) {
       item => item.Name.toUpperCase().includes(search.toUpperCase())
     );
   }
-
 
 
 

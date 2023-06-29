@@ -1,5 +1,5 @@
-import { findProductById } from "./externalServices.mjs"
-import { discount, getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { findProductById, getProductsByCategory } from "./externalServices.mjs"
+import { discount, getLocalStorage, getParam, renderListWithTemplate, setLocalStorage } from "./utils.mjs";
 
 
 
@@ -51,7 +51,9 @@ export async function addProductToCart(product) {
 }
 
 
-function renderProductDetails(product){
+
+
+export function renderProductDetails(product){
   document.getElementById("productName").innerHTML = product.Name;
   document.getElementById("productNameWithoutBrand").innerHTML = product.NameWithoutBrand;
   document.getElementById("productImage").setAttribute("src", product.Images.PrimaryLarge);
@@ -70,7 +72,7 @@ function renderProductDetails(product){
   
 }
 
-function renderProductNotFound(){
+export function renderProductNotFound(){
   const productSection = document.querySelector(".product-detail");
   productSection.innerHTML = "";
   let notFoundDetails = `<h3 id='productName'></h3>
