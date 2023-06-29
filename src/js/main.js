@@ -33,13 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
-
+  
+  const newsletterForm = document.getElementById('news-signup');
 
 newsletterForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   const alertInstance = new Alert();
   const alertsHTML = await alertInstance.alertsHTml();
-  const newsletterForm = document.getElementById('news-signup');
  
   const successAlert = {
     message: 'You have successfully subscribed to our newsletter!',
