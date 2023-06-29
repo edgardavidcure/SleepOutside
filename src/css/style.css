@@ -467,6 +467,7 @@ button {
   justify-content: center;
   align-items: center;
   width: 100%;
+  left: 0;
 }
 #alert-list p{
   padding: 1.5rem 2rem;
@@ -475,6 +476,7 @@ button {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   font-size: 1.2rem;
   text-align: center;
+  justify-self: center;
 }
 @keyframes slideIn {
   0% {
