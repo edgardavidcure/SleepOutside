@@ -121,7 +121,6 @@ function renderWishContents() {
 
   const wishlistItems = getLocalStorage("so-wishlist");
   const productList = document.querySelector(".wishlist");
-  console.log(wishlistItems)
   if (wishlistItems && wishlistItems.length > 0) {
     const htmlItems = wishlistItems.map((item) => wishlistTemplate(item));
     productList.innerHTML = htmlItems.join("");

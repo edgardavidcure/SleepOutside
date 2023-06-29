@@ -2,7 +2,6 @@ import { getOrders } from "./externalServices.mjs";
 
 export async function orders() {
     const ordersData = await getOrders();
-    console.log(ordersData);
     
     if (Array.isArray(ordersData)) {
       const result = ordersData.reduce((groupedOrders, order) => {
@@ -16,7 +15,6 @@ export async function orders() {
         return groupedOrders;
       }, {});
       
-      console.log(result);
     }
   }
 

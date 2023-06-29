@@ -4,7 +4,6 @@ import { checkout } from "./externalServices.mjs";
 // takes the items currently stored in the cart (localstorage) and returns them in a simplified form.
 function packageItems(items) {
     const simplifiedItems = items.map((item) => {
-      console.log(item);
       return {
         id: item.Id,
         price: item.FinalPrice,
