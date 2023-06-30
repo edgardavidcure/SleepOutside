@@ -166,4 +166,3 @@ closeBtn.addEventListener("click", (event) => {
     productList(productsList, category, e.target.value);
 
   })
-
