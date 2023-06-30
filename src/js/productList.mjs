@@ -1,12 +1,14 @@
 import { getProductsByCategory } from "./externalServices.mjs";
 import { discount, renderListWithTemplate,capitalize, getLocalStorage } from "./utils.mjs";
 import Alert from "./alerts.js";
+import productDetails from "./productDetails.mjs";
 
 
 export default async function productList(selector, category, search, sort) {
 
   document.getElementById("categoryName").innerHTML = capitalize(`${category}`);
   let alert = new Alert
+  console.log(alert.alertsHTml)
   document.getElementById("alert-list").innerHTML = await alert.alertsHTml();
   let products = await getProductsByCategory(category);
 
@@ -37,7 +39,19 @@ export default async function productList(selector, category, search, sort) {
      }
   }
 
-
+  function checkInput(input) {
+    if (input.value !== "") {
+      input.classList.add("active");
+    } else {
+      input.classList.remove("active");
+    }
+  }
+  
+  const inputElement = document.getElementById("searchBar");
+  
+  inputElement.addEventListener("input", function() {
+    checkInput(this);
+  });
 
   breadcrumb(category,products.length);
 

@@ -5,7 +5,6 @@ export async function orders() {
   let table = document.querySelector("#ordersTable tbody");
 
     const ordersData = await getOrders();
-    console.log(ordersData);
     
     if (Array.isArray(ordersData)) {
 
@@ -24,11 +23,10 @@ export async function orders() {
           rows = "<tr>No old orders :(</tr>"  
         }
         table.innerHTML = rows;
-      
-      console.log(ordersData);
+    }
   }
-}
-
+      
+   
 
 
   

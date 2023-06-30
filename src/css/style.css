@@ -460,8 +460,40 @@ button {
   height: 150px;
 }
 
-
-
+#alert-list{
+  position: fixed;
+  top: -10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  left: 0;
+}
+#alert-list p{
+  padding: 1.5rem 2rem;
+  width: fit-content;
+  border-radius: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  font-size: 1.2rem;
+  text-align: center;
+  justify-self: center;
+}
+@keyframes slideIn {
+  0% {
+    top: -200px;
+  }
+  100% {
+    top: 5vh;
+  }
+}
+@keyframes slideOut {
+  0% {
+    top: 5vh;
+  }
+  100% {
+    top: -200px;
+  }
+}
 /* alert styles */
 .alert {
   display: flex;
@@ -483,9 +515,7 @@ button {
   background-color: #a4b8c4;
 }
 
-.fa{
-  
-}
+
 
 .modal {
   display: none;
@@ -688,6 +718,12 @@ footer {
   background: #FFF;
   border-radius: 10px;
 }
+
+.box .input.active {
+  width: 350px;
+  background: #FFF;
+  border-radius: 10px;
+}
 .box i{
   position: absolute;
   top: 50%;
@@ -708,10 +744,18 @@ footer {
   padding-inline: 0.5em;
 
 }
-.container{
+#slidesContainer{
   overflow-x: scroll;
   position: relative;
 
+}
+.container{
+  overflow-x: scroll;
+  width: 100%;
+  height: 400px;
+}
+.wishlistSection{
+  display: none;
 }
 
 
@@ -748,6 +792,7 @@ footer {
   width: 100%;
   gap: 2rem;
   padding: 0;
+  height: fit-content;
 }
 
 
@@ -757,18 +802,21 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
-  width: 100%;
+  height: auto;
+  width: 200px;
   padding: 0.5rem 1rem;
 
   
 
 }
 .wish-card{
-  min-width: 200px;
-  min-height: 100%;
   border: 1px solid #cbd2d9;
   transition: 0.2s ease-in;
+  min-height: 100%;
+
+}
+.wish-card img{
+  max-width: 200px;
 }
 .wish-card:hover{
   background-color: #eeeeee;
@@ -777,6 +825,121 @@ footer {
 .wishlistLink h6{
   margin: 0;
   font-size: 0.9rem;
+}
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 60%;
+  width: auto;
+  padding: 10px;
+  margin-top: -50px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(121, 121, 121, 0.8);
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,.demo:hover {
+  opacity: 1;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content p{
+  width: 60%;
+  margin-bottom: 2rem;
+
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.registerButton {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
 }
 
 
@@ -803,5 +966,3 @@ footer {
     justify-content: space-between;
   }
 }
-
-

@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="../css/style.css" />
 
-    <script src="../js/product.js" type="module"></script>
+    <script src="../js/product.js" type="module" defer></script>
   </head>
 
   <body>
@@ -23,7 +23,22 @@
             <h3 id="productName"></h3>
             <h2 class="divider" id="productNameWithoutBrand"></h2>
             <span id="discount"></span>
-            <img id="productImage" class="divider" src="" alt="" />
+            <div>
+              <div id="slidesContainer">
+                <div class="mySlides">
+                  <img id="" class="divider productImage" src="" alt="" style="width:100%"/>
+                </div>
+                <a class="prev">&#10094;</a>
+                <a class="next">&#10095;</a>
+              </div>
+             
+              
+              <div class="row">
+                <div class="column">
+                  <img class="demo cursor productImage" src="" alt="" style="width:100%">
+                </div>
+              </div>
+            </div>
             <p class="product-card__price slashed" id="productSuggestedPrice"></p>
             <p class="product-card__price" id="productFinalPrice"></p>
             <p class="product__color" id="productColorName"></p>
@@ -41,6 +56,8 @@
             <ul id="oldComments">
             </ul>
           </section>
+          <div id="alert-list"></div>
+
     </main>
 
     <footer id="main-footer"></footer>
