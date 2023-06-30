@@ -1,12 +1,13 @@
 import { findProductById } from "./externalServices.mjs";
 import productDetails from "./productDetails.mjs";
-import { addProductToCart, plusSlides, currentSlide} from "./productDetails.mjs";
+import { addProductToCart, plusSlides, currentSlide, addComment} from "./productDetails.mjs";
 import { setSuperscript, getParam, loadHeaderFooter} from "./utils.mjs";
 import Alert from "./alerts";
 const productId = getParam("product");
 const addToCartButton = document.getElementById("addToCart");
 loadHeaderFooter();
 productDetails(productId);
+loadHeaderFooter();
 
 // add to cart button event handler
 export async function addToCartHandler(e) {
@@ -43,20 +44,16 @@ export async function addToCartHandler(e) {
   }, 2000);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 // add listener to Add to Cart button
 addToCartButton.addEventListener("click", addToCartHandler);
+
+//add listener to Add coment button
+commentForm.addEventListener("submit", function(e){
+  e.preventDefault();
+  let comment = document.getElementById("newComment").value;
+  addComment(comment, productId);
+})
+
 
 document.querySelector('.prev').addEventListener('click', function() {
   plusSlides(-1)

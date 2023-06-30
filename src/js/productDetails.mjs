@@ -6,7 +6,7 @@ import { discount, getLocalStorage, getParam, renderListWithTemplate, setLocalSt
 export default async function productDetails(productId){
   const product = await findProductById(productId);
   if (product){
-    renderProductDetails(product)
+    renderProductDetails(product);
   } else {
     renderProductNotFound();
   }
@@ -65,6 +65,8 @@ export function renderProductDetails(product){
   document.getElementById("productColorName").innerHTML = product.Colors[0].ColorName;
   document.getElementById("productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
   document.getElementById("addToCart").setAttribute("data-id",product.Id);
+
+  renderComments(product.Name)
   
   if(product.SuggestedRetailPrice != product.FinalPrice){
     const discountSpan = document.getElementById("discount");
@@ -87,6 +89,52 @@ export function renderProductNotFound(){
   productSection.insertAdjacentHTML("afterbegin", notFoundDetails);
 
 
+}
+
+function renderComments(productName) {
+  let comments = getLocalStorage("comments");
+
+  if (comments) {
+    let productComments = comments.filter((item) => item.product === productName);
+
+    if (productComments.length !== 0) {
+      const list = document.getElementById("oldComments");
+      list.innerHTML = ""; 
+
+      productComments[0].comments.forEach((comment) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = comment;
+        list.appendChild(listItem);
+      });
+    }
+  }
+}
+
+export async function addComment(comment, productId) {
+  let comments = getLocalStorage("comments");
+  const product = await findProductById(productId);
+
+  if (comments) {
+    let productComments = comments.find((item) => item.product === product.Name);
+
+    if (productComments) {
+      productComments.comments.unshift(comment);
+    } else {
+      comments.push({
+        product: product.Name,
+        comments: [comment]
+      });
+    }
+  } else {
+    comments = [{
+      product: product.Name,
+      comments: [comment]
+    }];
+  }
+
+  setLocalStorage("comments", comments);
+  renderComments(product.Name);
+  document.getElementById("newComment").value = "";
 }
 
 export async function getCarouselImages(){
