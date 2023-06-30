@@ -25,11 +25,7 @@ export async function orders() {
         table.innerHTML = rows;
       
       console.log(ordersData);
-  }
-}
-
-
-
+ 
       const result = ordersData.reduce((groupedOrders, order) => {
         const { fname, lname } = order;
         const fullName = `${fname} ${lname}`;
