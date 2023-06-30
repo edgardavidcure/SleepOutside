@@ -691,6 +691,12 @@ footer {
   background: #FFF;
   border-radius: 10px;
 }
+
+.box .input.active {
+  width: 350px;
+  background: #FFF;
+  border-radius: 10px;
+}
 .box i{
   position: absolute;
   top: 50%;

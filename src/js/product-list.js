@@ -162,7 +162,6 @@ closeBtn.addEventListener("click", (event) => {
   
 
   searchInput.addEventListener("input",(e)=>{
-    console.log("Changes: ", e.target.value);
     productList(productsList, category, e.target.value);
 
   })

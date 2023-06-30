@@ -21,7 +21,7 @@
       <section class="products">
         <h2>Top Products: <span id="categoryName"></span></h2>
 
-        <div>
+        <div style="margin-bottom: 15px;">
           <h5>Sort by:</h5>
           <div id="sortButtonsRow">
             <button id="sortName">Name</button>
@@ -30,7 +30,7 @@
         </div>
 
         <div class="box">
-              <input type="text" class="input" id="searchBar"  name="txt" onmouseout="this.value = ''; this.blur();">
+              <input type="text" class="input" id="searchBar" oninput="checkInput(this)"  name="txt" >
           <i class="fa fa-search"></i>
       
       </div>
@@ -57,6 +57,15 @@
           </div>
 
       </div>
+      <script>
+        function checkInput(input) {
+          if (input.value !== '') {
+            input.classList.add('active');
+          } else {
+            input.classList.remove('active');
+          }
+        }
+      </script>
     </main>
     <footer id="main-footer"></footer>
     <script src="../js/product-list.js" type="module" ></script>
