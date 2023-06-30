@@ -8,6 +8,7 @@ export default async function productList(selector, category, search, sort) {
 
   document.getElementById("categoryName").innerHTML = capitalize(`${category}`);
   let alert = new Alert
+  console.log(alert.alertsHTml)
   document.getElementById("alert-list").innerHTML = await alert.alertsHTml();
   let products = await getProductsByCategory(category);
 

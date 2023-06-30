@@ -460,8 +460,40 @@ button {
   height: 150px;
 }
 
-
-
+#alert-list{
+  position: fixed;
+  top: -10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  left: 0;
+}
+#alert-list p{
+  padding: 1.5rem 2rem;
+  width: fit-content;
+  border-radius: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  font-size: 1.2rem;
+  text-align: center;
+  justify-self: center;
+}
+@keyframes slideIn {
+  0% {
+    top: -200px;
+  }
+  100% {
+    top: 5vh;
+  }
+}
+@keyframes slideOut {
+  0% {
+    top: 5vh;
+  }
+  100% {
+    top: -200px;
+  }
+}
 /* alert styles */
 .alert {
   display: flex;
@@ -483,9 +515,7 @@ button {
   background-color: #a4b8c4;
 }
 
-.fa{
-  
-}
+
 
 .modal {
   display: none;
@@ -688,6 +718,11 @@ footer {
 }
 .container{
   overflow-x: scroll;
+  width: 100%;
+  height: 400px;
+}
+.wishlistSection{
+  display: none;
 }
 
 
@@ -724,8 +759,40 @@ footer {
   width: 100%;
   gap: 2rem;
   padding: 0;
+  height: fit-content;
 }
 
+
+.wishlist a{
+  text-decoration: none;
+  color: #303030;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+  width: 200px;
+  padding: 0.5rem 1rem;
+
+  
+
+}
+.wish-card{
+  border: 1px solid #cbd2d9;
+  transition: 0.2s ease-in;
+  min-height: 100%;
+
+}
+.wish-card img{
+  max-width: 200px;
+}
+.wish-card:hover{
+  background-color: #eeeeee;
+  transition: 0.2s ease-in;
+}
+.wishlistLink h6{
+  margin: 0;
+  font-size: 0.9rem;
+}
 /* Hide the images by default */
 .mySlides {
   display: none;
@@ -786,33 +853,6 @@ footer {
 
 .active,.demo:hover {
   opacity: 1;
-}
-.wishlist a{
-  text-decoration: none;
-  color: #303030;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  width: 100%;
-  padding: 0.5rem 1rem;
-
-  
-
-}
-.wish-card{
-  min-width: 200px;
-  min-height: 100%;
-  border: 1px solid #cbd2d9;
-  transition: 0.2s ease-in;
-}
-.wish-card:hover{
-  background-color: #eeeeee;
-  transition: 0.2s ease-in;
-}
-.wishlistLink h6{
-  margin: 0;
-  font-size: 0.9rem;
 }
 .modal {
   display: none;
