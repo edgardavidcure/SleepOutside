@@ -5,7 +5,6 @@ export async function orders() {
   let table = document.querySelector("#ordersTable tbody");
 
     const ordersData = await getOrders();
-    console.log(ordersData);
     
     if (Array.isArray(ordersData)) {
 
@@ -38,7 +37,6 @@ export async function orders() {
         return groupedOrders;
       }, {});
       
-      console.log(result);
     }
   }
 

@@ -1,6 +1,7 @@
 import { getProductsByCategory } from "./externalServices.mjs";
 import { discount, renderListWithTemplate,capitalize, getLocalStorage } from "./utils.mjs";
 import Alert from "./alerts.js";
+import productDetails from "./productDetails.mjs";
 
 
 export default async function productList(selector, category, search, sort) {

@@ -43,7 +43,6 @@ export function checkLogin(){
     if (!tokenCheck){
         setLocalStorage("so-token", "");
         const path = window.location;
-        console.log(path.pathname)
         window.location = `/login/index.html?redirect=${path.pathname}`;
 
     }

@@ -1,5 +1,5 @@
-import { findProductById } from "./externalServices.mjs"
-import { discount, getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { findProductById, getProductsByCategory } from "./externalServices.mjs"
+import { discount, getLocalStorage, getParam, renderListWithTemplate, setLocalStorage } from "./utils.mjs";
 
 
 
@@ -51,10 +51,16 @@ export async function addProductToCart(product) {
 }
 
 
-function renderProductDetails(product){
+
+
+export function renderProductDetails(product){
   document.getElementById("productName").innerHTML = product.Name;
   document.getElementById("productNameWithoutBrand").innerHTML = product.NameWithoutBrand;
-  document.getElementById("productImage").setAttribute("src", product.Images.PrimaryLarge);
+  const mainImage = document.querySelectorAll(".productImage");
+  mainImage.forEach(element => {
+    element.setAttribute("src", product.Images.PrimaryLarge)
+  });
+  getCarouselImages()
   document.getElementById("productFinalPrice").innerHTML = `$${product.FinalPrice}`;
   document.getElementById("productColorName").innerHTML = product.Colors[0].ColorName;
   document.getElementById("productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
@@ -68,9 +74,10 @@ function renderProductDetails(product){
 
   }
   
+  
 }
 
-function renderProductNotFound(){
+export function renderProductNotFound(){
   const productSection = document.querySelector(".product-detail");
   productSection.innerHTML = "";
   let notFoundDetails = `<h3 id='productName'></h3>
@@ -82,4 +89,67 @@ function renderProductNotFound(){
 
 }
 
+export async function getCarouselImages(){
+  const id = await getParam("product")
+  const carouselParentElement = document.querySelector(".row")
+  const slideParentElement = document.querySelector("#slidesContainer")
+  const productData = await findProductById(id)
+  const extraImages = productData.Images.ExtraImages;
+  if(extraImages){
+    renderListWithTemplate(renderCarouselImage, carouselParentElement, extraImages, "beforeend", false)
+    renderListWithTemplate(renderSlideImage, slideParentElement, extraImages, "beforeend", false)
+  }
+  showSlides(slideIndex)
+  const images = document.querySelectorAll('.demo');
+    images.forEach((image, index) => {
+      image.addEventListener('click', () => {
+      currentSlide(index + 1);
+    });
+  });
+
+}
+
+export function renderCarouselImage(data, index){
+  const newImage = 
+  `<div class="column">
+      <img class="demo cursor" src="${data.Src}" alt="${data.Title}" id="${index}" style="width:100%" alt="The Woods">
+    </div>`
+  return newImage
+}
+
+export function renderSlideImage(data){
+  const newImage = 
+  `<div class="mySlides">
+      <img src="${data.Src}" style="width:100%" alt="${data.Title}" class="divider">
+    </div>`
+  return newImage
+}
+
+
+let slideIndex = 1;
+
+export function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+export function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+export function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.querySelectorAll(".demo");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+
+  dots[slideIndex-1].classList.add("active")
+}
 

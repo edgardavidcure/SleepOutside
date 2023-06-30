@@ -66,7 +66,6 @@ function addProductToWishlist(product, source) {
     products = wishlist
   }
   const isProductInWishlist = wishlist.some((p) => p.Id === product.Id);
-  console.log(isProductInWishlist)
   if (isProductInWishlist) {
     // Remove the item from the wishlist
     let findItemIndex = products.findIndex((item) => item.Id == product.Id)

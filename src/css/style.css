@@ -681,10 +681,13 @@ footer {
   padding-inline: 0.5em;
 
 }
-.container{
+#slidesContainer{
   overflow-x: scroll;
   position: relative;
 
+}
+.container{
+  overflow-x: scroll;
 }
 
 
@@ -723,7 +726,67 @@ footer {
   padding: 0;
 }
 
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
 
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 60%;
+  width: auto;
+  padding: 10px;
+  margin-top: -50px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(121, 121, 121, 0.8);
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,.demo:hover {
+  opacity: 1;
+}
 .wishlist a{
   text-decoration: none;
   color: #303030;
@@ -776,5 +839,3 @@ footer {
     justify-content: space-between;
   }
 }
-
-
