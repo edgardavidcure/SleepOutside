@@ -43,8 +43,7 @@ function renderCartTotal(cartTotal) {
 
 function onDelete(idToDelete) {
   let cartContent = getLocalStorage("so-cart");
-  let findItemIndex = cartContent.findIndex((item) => item.Id == idToDelete);
-  cartContent.splice(findItemIndex, 1);
+  cartContent.splice(idToDelete, 1);
   setLocalStorage("so-cart", cartContent);
   renderCartContents();
 
@@ -62,10 +61,9 @@ function renderCartContents() {
     const subtractButtons = document.querySelectorAll(".subtractQuantity");
     const addButtons = document.querySelectorAll(".addQuantity");
 
-    deleteButtons.forEach((button) => {
+    deleteButtons.forEach((button, index) => {
       button.addEventListener("click", () => {
-        const dataId = button.getAttribute("data-id");
-        onDelete(dataId);
+        onDelete(index);
       });
     });
 
@@ -95,7 +93,7 @@ function cartItemTemplate(item, index) {
     <a href="../product_pages/index.html?product=${item.Id}">
       <h2 class="card__name">${item.Name}</h2>
     </a>
-    <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+    <p class="cart-card__color">${item.SelectedColor}</p>
     <div class="cart-card__quantity">
       <button class="subtractQuantity" data-index="${index}">-</button>
       <p>Qty: ${item.totalInCart}</p>
