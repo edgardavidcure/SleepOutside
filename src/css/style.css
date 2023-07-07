@@ -943,6 +943,34 @@ footer {
 }
 
 
+#productColorOptions{
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  overflow: auto;
+}
+.colorOption{
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  text-align: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.colorOption img{
+  width: 50px;
+}
+.colorOption h6{
+  margin: 0;
+}
+
+.colorOption.selected {
+  border: 2px solid red; 
+  border-radius: 15px;
+}
+
+
 
 @media screen and (min-width: 500px) {
   body {

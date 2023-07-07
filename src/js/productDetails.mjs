@@ -13,6 +13,7 @@ export default async function productDetails(productId){
 }
 
 export async function addProductToCart(product) {
+  product.SelectedColor = getLocalStorage("color")
   let products = [];
 
   const cart = getLocalStorage("so-cart");
@@ -28,23 +29,29 @@ export async function addProductToCart(product) {
   } 
   // set a new property to calculate how many items are in the cart with a default of 1
   product.totalInCart = 1
-  if(idsArray.includes(product.Id)){
-        for (let cartProduct of products){
-          //count how many repeated products are in the cart
-          let count = cartProduct.totalInCart
-          //if Ids are the same, add 1 to the total and update the total in the array
-          if (cartProduct.Id === product.Id){
-            count++;
-            cartProduct.totalInCart = count
-          } 
+  if (idsArray.includes(product.Id)) {
+    products.forEach(cartProduct => {
+      // Contar quantos produtos repetidos existem no carrinho
+      let count = cartProduct.totalInCart;
+      // Se os IDs forem iguais, adicionar 1 ao total e atualizar o total no objeto
+      if (cartProduct.Id === product.Id) {
+        if (cartProduct.SelectedColor === product.SelectedColor) {
+          count++;
+          cartProduct.totalInCart = count;
+        } else {
+          // Se o produto tiver uma cor diferente, adicioná-lo novamente ao carrinho
+          product.totalInCart = 1;
+          products.push(product);
         }
-      
-
-    } else {
-      //if the item is not in the cart already, add it
-      products.push(product);
-
-    }
+      }
+    });
+  } else {
+    // Se o item ainda não estiver no carrinho, adicioná-lo
+    product.totalInCart = 1;
+    products.push(product);
+  }
+  
+    console.log(products)
   setLocalStorage("so-cart", products);
 
   
@@ -62,7 +69,6 @@ export function renderProductDetails(product){
   });
   getCarouselImages()
   document.getElementById("productFinalPrice").innerHTML = `$${product.FinalPrice}`;
-  document.getElementById("productColorName").innerHTML = product.Colors[0].ColorName;
   document.getElementById("productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
   document.getElementById("addToCart").setAttribute("data-id",product.Id);
 
@@ -75,9 +81,56 @@ export function renderProductDetails(product){
     document.getElementById("productSuggestedPrice").innerHTML = `$${(product.SuggestedRetailPrice).toFixed(2)}`;
 
   }
-  
-  
+  if(product.Colors &&  product.Colors.length > 1){
+    renderColorOptions(product.Colors)
+  }else{
+    setLocalStorage("color", product.Colors[0].ColorName)
+    document.getElementById("colorsToselect").style.display = "none" 
+  }
 }
+
+
+function renderColorOptions(colors) {
+  const colorContainer = document.getElementById("productColorOptions");
+  colorContainer.innerHTML = "";
+
+  colors.map((color, index)=> {
+    const colorOption = document.createElement("div");
+    colorOption.classList.add("colorOption");
+    colorOption.setAttribute("data-color", color.ColorName);
+    colorOption.setAttribute("onclick", "selectColorOption(this)");
+    if(index == 0){
+      colorOption.classList.add("selected");
+      setLocalStorage("color", color.ColorName)
+    }
+    const swatchImage = document.createElement("img");
+    swatchImage.src = color.ColorPreviewImageSrc;
+    swatchImage.alt = color.ColorName;
+
+    const imageName = document.createElement("h6");
+    imageName.innerHTML = color.ColorName;
+    
+    colorOption.appendChild(swatchImage);
+    colorOption.appendChild(imageName);
+    colorContainer.appendChild(colorOption);
+  });
+}
+
+window.selectColorOption = function(element) {
+  const selectedColor = element.getAttribute("data-color");
+  
+  // Remove the border from all color options
+  const colorOptions = document.getElementsByClassName("colorOption");
+  for (let i = 0; i < colorOptions.length; i++) {
+    colorOptions[i].classList.remove("selected");
+  }
+  
+  // Add the border to the selected color option
+  element.classList.add("selected");
+  setLocalStorage("color", selectedColor)
+  // Do something with the selected color (e.g., update product image, apply color filter, etc.)
+}
+
 
 export function renderProductNotFound(){
   const productSection = document.querySelector(".product-detail");
@@ -148,9 +201,9 @@ export async function getCarouselImages(){
     renderListWithTemplate(renderSlideImage, slideParentElement, extraImages, "beforeend", false)
   }
   showSlides(slideIndex)
-  const images = document.querySelectorAll('.demo');
+  const images = document.querySelectorAll(".demo");
     images.forEach((image, index) => {
-      image.addEventListener('click', () => {
+      image.addEventListener("click", () => {
       currentSlide(index + 1);
     });
   });
@@ -196,8 +249,8 @@ export function showSlides(n) {
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";
+  slides[slideIndex - 1].style.display = "block";
 
-  dots[slideIndex-1].classList.add("active")
+  dots[slideIndex - 1].classList.add("active")
 }
 

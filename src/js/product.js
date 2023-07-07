@@ -27,20 +27,20 @@ export async function addToCartHandler(e) {
     iterations: 1
   });
   const successAlert = {
-    message: 'Item added to the shopping cart!',
-    background: 'green',
-    color: 'white'
+    message: "Item added to the shopping cart!",
+    background: "green",
+    color: "white"
   };
 
-  const alertsContainer = document.getElementById('alert-list');
+  const alertsContainer = document.getElementById("alert-list");
   const successAlertHTML = `<p style="background-color: ${successAlert.background}; color: ${successAlert.color};">${successAlert.message}</p>`;
   alertsContainer.innerHTML = successAlertHTML + alertsHTML;
 
-  alertsContainer.style.animation = 'slideIn 0.5s forwards';
+  alertsContainer.style.animation = "slideIn 0.5s forwards";
 
   setTimeout(function() {
-    alertsContainer.style.animation = 'slideOut 0.5s forwards';
-    alertsContainer.style.position = 'fixed'
+    alertsContainer.style.animation = "slideOut 0.5s forwards";
+    alertsContainer.style.position = "fixed"
   }, 2000);
 }
 
@@ -48,6 +48,7 @@ export async function addToCartHandler(e) {
 addToCartButton.addEventListener("click", addToCartHandler);
 
 //add listener to Add coment button
+const commentForm = document.getElementById("commentForm")
 commentForm.addEventListener("submit", function(e){
   e.preventDefault();
   let comment = document.getElementById("newComment").value;
@@ -55,11 +56,11 @@ commentForm.addEventListener("submit", function(e){
 })
 
 
-document.querySelector('.prev').addEventListener('click', function() {
+document.querySelector(".prev").addEventListener("click", function() {
   plusSlides(-1)
 });
 
-document.querySelector('.next').addEventListener('click', function() {
+document.querySelector(".next").addEventListener("click", function() {
   plusSlides(+1)
 });
 
