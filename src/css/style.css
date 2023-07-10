@@ -676,7 +676,6 @@ footer {
   left: 100%;
   position: absolute;
   top: 0;
-  transition: background 0.2s linear;
   width: 1em;
   z-index: 1;
 }
