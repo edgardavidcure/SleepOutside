@@ -12,6 +12,8 @@ export default defineConfig({
         cart: resolve(__dirname, "src/cart/index.html"),
         product: resolve(__dirname, "src/product_pages/index.html"),
         "product-list": resolve(__dirname, "src/product-list/index.html"),
+        checkout: resolve(__dirname, "src/checkout/index.html"),
+        "checkout-success": resolve(__dirname, "src/checkout/success.html"),
         orders: resolve(__dirname, "src/orders/index.html"),
         login: resolve(__dirname, "src/login/index.html"),
       },
