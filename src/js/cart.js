@@ -29,12 +29,12 @@ function addQuantity(index) {
 
 function renderCartTotal(cartTotal) {
   if (cartTotal == 0){
-    cartSection.style.display = "none";
     cartSection.classList.remove("show");
+    cartSection.classList.add("hide");
   }else{
     cartTotalElement.innerHTML = `Total: <span>$${cartTotal}</span>`;
-    cartSection.classList.add("show");
     cartSection.classList.remove("hide");
+    cartSection.classList.add("show");
   }
   
   loadHeaderFooter();
