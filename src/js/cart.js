@@ -1,9 +1,14 @@
-import { getLocalStorage, setLocalStorage, loadHeaderFooter, calculateTotal, setSuperscript, capitalize} from "./utils.mjs";
+import {
+  getLocalStorage,
+  setLocalStorage,
+  loadHeaderFooter,
+  calculateTotal,
+  setSuperscript,
+  capitalize,
+} from "./utils.mjs";
 const cartItems = getLocalStorage("so-cart");
 const cartSection = document.querySelector(".cart-footer");
 const cartTotalElement = document.querySelector(".cart-total");
-
-
 
 let cartTotal;
 function subtractQuantity(index) {
@@ -28,17 +33,16 @@ function addQuantity(index) {
 }
 
 function renderCartTotal(cartTotal) {
-  if (cartTotal == 0){
+  if (cartTotal == 0) {
     cartSection.classList.remove("show");
     cartSection.classList.add("hide");
-  }else{
+  } else {
     cartTotalElement.innerHTML = `Total: <span>$${cartTotal}</span>`;
     cartSection.classList.remove("hide");
     cartSection.classList.add("show");
   }
-  
-  loadHeaderFooter();
 
+  loadHeaderFooter();
 }
 
 function onDelete(idToDelete) {
@@ -46,16 +50,16 @@ function onDelete(idToDelete) {
   cartContent.splice(idToDelete, 1);
   setLocalStorage("so-cart", cartContent);
   renderCartContents();
-
 }
 
 function renderCartContents() {
-
   const cartItems = getLocalStorage("so-cart");
   const productList = document.querySelector(".product-list");
 
   if (cartItems && cartItems.length > 0) {
-    const htmlItems = cartItems.map((item, index) => cartItemTemplate(item, index));
+    const htmlItems = cartItems.map((item, index) =>
+      cartItemTemplate(item, index)
+    );
     productList.innerHTML = htmlItems.join("");
     const deleteButtons = document.querySelectorAll(".cart-delete");
     const subtractButtons = document.querySelectorAll(".subtractQuantity");
@@ -78,11 +82,10 @@ function renderCartContents() {
     const cartTotal = calculateTotal(cartItems);
     renderCartTotal(cartTotal);
   } else {
-    productList.innerHTML = "<p>The cart is empty<span style='font-size:25px;'>&#128549;</span></p>";
+    productList.innerHTML =
+      "<p>The cart is empty<span style='font-size:25px;'>&#128549;</span></p>";
     renderCartTotal(0);
-    
   }
-
 }
 
 function cartItemTemplate(item, index) {
@@ -104,7 +107,7 @@ function cartItemTemplate(item, index) {
   </li>`;
 }
 
-function wishlistTemplate(item){
+function wishlistTemplate(item) {
   return `<li class="wish-card">
     <a href="../product_pages/index.html?product=${item.Id}" class="wishlistLink">
       <img src="${item.Images.PrimaryMedium}" alt="${item.Name}">
@@ -112,26 +115,23 @@ function wishlistTemplate(item){
       <h6>${item.Brand.Name}</h6>
       <p>$${item.FinalPrice}</p>
     </a>
-  </li>`
+  </li>`;
 }
 
 function renderWishContents() {
-
   const wishlistItems = getLocalStorage("so-wishlist");
   const productList = document.querySelector(".wishlist");
-  const wishlistSection = document.querySelector(".wishlistSection")
+  const wishlistSection = document.querySelector(".wishlistSection");
   if (wishlistItems && wishlistItems.length > 0) {
-    wishlistSection.style.display = "block"
+    wishlistSection.style.display = "block";
 
     const htmlItems = wishlistItems.map((item) => wishlistTemplate(item));
     productList.innerHTML = htmlItems.join("");
-
   } else {
-    productList.innerHTML = "<p>The cart is empty<span style='font-size:25px;'>&#128549;</span></p>";
+    productList.innerHTML =
+      "<p>The cart is empty<span style='font-size:25px;'>&#128549;</span></p>";
     renderCartTotal(0);
-    
   }
-
 }
 loadHeaderFooter();
 renderCartContents();

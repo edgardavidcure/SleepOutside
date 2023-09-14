@@ -4,24 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sleep Outside | Home</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
-    <header class="divider" id="main-header">
-    </header>
+    <header class="divider" id="main-header"></header>
     <nav class="breadcrumbs">
       <a href="../index.html" class="breadcrumbs__item">Home</a>
-      <a href="#" id="category_bread" class="breadcrumbs__item"></a> 
+      <a href="#" id="category_bread" class="breadcrumbs__item"></a>
       <a href="#" id="totalQTY" class="breadcrumbs__item is-active"></a>
     </nav>
     <main class="divider">
-      
-    
       <section class="products">
         <h2>Top Products: <span id="categoryName"></span></h2>
 
-        <div style="margin-bottom: 15px;">
+        <div style="margin-bottom: 15px">
           <h5>Sort by:</h5>
           <div id="sortButtonsRow">
             <button id="sortName">Name</button>
@@ -30,45 +30,54 @@
         </div>
 
         <div class="box">
-              <input type="text" class="input" id="searchBar" oninput="checkInput(this)"  name="txt" >
+          <input
+            type="text"
+            class="input"
+            id="searchBar"
+            oninput="checkInput(this)"
+            name="txt"
+          />
           <i class="fa fa-search"></i>
-      
-      </div>
-        <ul class="product-list">
-          
-        </ul>
+        </div>
+        <ul class="product-list"></ul>
       </section>
       <div id="alert-list"></div>
       <div id="myModal" class="modal">
-          <div class="modal-content">
+        <div class="modal-content">
           <a id="modalProduct" href="">
-
-              <span class="close">&times;</span>
-              <h3 id="productName"></h3>
-              <h2 class="divider" id="productNameWithoutBrand"></h2>
-              <span id="discount"></span>
-              <img id="productImage" class="" src="" alt="" />
-              <p class="product-card__price slashed divider" id="productSuggestedPrice"></p>
-              <p class="product-card__price" id="productFinalPrice"></p>
-              <p class="product__color" id="productColorName"></p>
-              <p class="product__description" id="productDescriptionHtmlSimple"></p>
+            <span class="close">&times;</span>
+            <h3 id="productName"></h3>
+            <h2 class="divider" id="productNameWithoutBrand"></h2>
+            <span id="discount"></span>
+            <img id="productImage" class="" src="" alt="" />
+            <p
+              class="product-card__price slashed divider"
+              id="productSuggestedPrice"
+            ></p>
+            <p class="product-card__price" id="productFinalPrice"></p>
+            <p class="product__color" id="productColorName"></p>
+            <p
+              class="product__description"
+              id="productDescriptionHtmlSimple"
+            ></p>
           </a>
-              
-          </div>
-
+        </div>
       </div>
       <script>
         function checkInput(input) {
-          if (input.value !== '') {
-            input.classList.add('active');
+          if (input.value !== "") {
+            input.classList.add("active");
           } else {
-            input.classList.remove('active');
+            input.classList.remove("active");
           }
         }
       </script>
     </main>
     <footer id="main-footer"></footer>
-    <script src="../js/product-list.js" type="module" ></script>
-    <script src="https://kit.fontawesome.com/c20db622e4.js" crossorigin="anonymous"></script>
+    <script src="../js/product-list.js" type="module"></script>
+    <script
+      src="https://kit.fontawesome.com/c20db622e4.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

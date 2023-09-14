@@ -1,7 +1,12 @@
 import { findProductById } from "./externalServices.mjs";
 import productDetails from "./productDetails.mjs";
-import { addProductToCart, plusSlides, currentSlide, addComment} from "./productDetails.mjs";
-import { setSuperscript, getParam, loadHeaderFooter} from "./utils.mjs";
+import {
+  addProductToCart,
+  plusSlides,
+  currentSlide,
+  addComment,
+} from "./productDetails.mjs";
+import { setSuperscript, getParam, loadHeaderFooter } from "./utils.mjs";
 import Alert from "./alerts";
 const productId = getParam("product");
 const addToCartButton = document.getElementById("addToCart");
@@ -16,20 +21,23 @@ export async function addToCartHandler(e) {
   const product = await findProductById(e.target.dataset.id);
   addProductToCart(product);
   setSuperscript();
-  document.querySelector(".cart").animate([
-    // key frames
-    { transform: "translateX(0px)" },
-    { transform: "translateX(-10px)" },
-    { transform: "translateX(10px)" }
-  ], {
-    // sync options
-    duration: 200,
-    iterations: 1
-  });
+  document.querySelector(".cart").animate(
+    [
+      // key frames
+      { transform: "translateX(0px)" },
+      { transform: "translateX(-10px)" },
+      { transform: "translateX(10px)" },
+    ],
+    {
+      // sync options
+      duration: 200,
+      iterations: 1,
+    }
+  );
   const successAlert = {
     message: "Item added to the shopping cart!",
     background: "green",
-    color: "white"
+    color: "white",
   };
 
   const alertsContainer = document.getElementById("alert-list");
@@ -38,9 +46,9 @@ export async function addToCartHandler(e) {
 
   alertsContainer.style.animation = "slideIn 0.5s forwards";
 
-  setTimeout(function() {
+  setTimeout(function () {
     alertsContainer.style.animation = "slideOut 0.5s forwards";
-    alertsContainer.style.position = "fixed"
+    alertsContainer.style.position = "fixed";
   }, 2000);
 }
 
@@ -48,20 +56,17 @@ export async function addToCartHandler(e) {
 addToCartButton.addEventListener("click", addToCartHandler);
 
 //add listener to Add coment button
-const commentForm = document.getElementById("commentForm")
-commentForm.addEventListener("submit", function(e){
+const commentForm = document.getElementById("commentForm");
+commentForm.addEventListener("submit", function (e) {
   e.preventDefault();
   let comment = document.getElementById("newComment").value;
   addComment(comment, productId);
-})
-
-
-document.querySelector(".prev").addEventListener("click", function() {
-  plusSlides(-1)
 });
 
-document.querySelector(".next").addEventListener("click", function() {
-  plusSlides(+1)
+document.querySelector(".prev").addEventListener("click", function () {
+  plusSlides(-1);
 });
 
-
+document.querySelector(".next").addEventListener("click", function () {
+  plusSlides(+1);
+});

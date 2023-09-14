@@ -14,53 +14,65 @@
   </head>
 
   <body>
-    <header class="divider" id="main-header">
-      
-    </header>
+    <header class="divider" id="main-header"></header>
 
     <main class="divider">
-        <section class="product-detail">
-            <h3 id="productName"></h3>
-            <h2 class="divider" id="productNameWithoutBrand"></h2>
-            <span id="discount"></span>
-            <div>
-              <div id="slidesContainer">
-                <div class="mySlides">
-                  <img id="" class="divider productImage" src="" alt="" style="width:100%"/>
-                </div>
-                <a class="prev">&#10094;</a>
-                <a class="next">&#10095;</a>
-              </div>
-             
-              
-              <div class="row">
-                <div class="column">
-                  <img class="demo cursor productImage" src="" alt="" style="width:100%">
-                </div>
-              </div>
+      <section class="product-detail">
+        <h3 id="productName"></h3>
+        <h2 class="divider" id="productNameWithoutBrand"></h2>
+        <span id="discount"></span>
+        <div>
+          <div id="slidesContainer">
+            <div class="mySlides">
+              <img
+                id=""
+                class="divider productImage"
+                src=""
+                alt=""
+                style="width: 100%"
+              />
             </div>
-            <p class="product-card__price slashed" id="productSuggestedPrice"></p>
-            <p class="product-card__price" id="productFinalPrice"></p>
-            <div id="colorsToselect">
-              <h5>Colors</h5>
-              <div id="productColorOptions"></div>
-            </div>
-            <p class="product__description" id="productDescriptionHtmlSimple"></p>
-            <div class="product-detail__add">
-              <button id="addToCart" data-id="">Add to Cart</button>
-            </div>
-          </section>
-          <section class="commentSection">
-            <h3>Comments</h3>
-            <form id="commentForm" class="newCommentForm" action="">
-              <textarea name="newComment" id="newComment" placeholder="Add your comment here!" cols="50" rows="10"></textarea>
-              <button type="submit" class="commentButton">Submit</button>
-            </form>
-            <ul id="oldComments">
-            </ul>
-          </section>
-          <div id="alert-list"></div>
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+          </div>
 
+          <div class="row">
+            <div class="column">
+              <img
+                class="demo cursor productImage"
+                src=""
+                alt=""
+                style="width: 100%"
+              />
+            </div>
+          </div>
+        </div>
+        <p class="product-card__price slashed" id="productSuggestedPrice"></p>
+        <p class="product-card__price" id="productFinalPrice"></p>
+        <div id="colorsToselect">
+          <h5>Colors</h5>
+          <div id="productColorOptions"></div>
+        </div>
+        <p class="product__description" id="productDescriptionHtmlSimple"></p>
+        <div class="product-detail__add">
+          <button id="addToCart" data-id="">Add to Cart</button>
+        </div>
+      </section>
+      <section class="commentSection">
+        <h3>Comments</h3>
+        <form id="commentForm" class="newCommentForm" action="">
+          <textarea
+            name="newComment"
+            id="newComment"
+            placeholder="Add your comment here!"
+            cols="50"
+            rows="10"
+          ></textarea>
+          <button type="submit" class="commentButton">Submit</button>
+        </form>
+        <ul id="oldComments"></ul>
+      </section>
+      <div id="alert-list"></div>
     </main>
 
     <footer id="main-footer"></footer>

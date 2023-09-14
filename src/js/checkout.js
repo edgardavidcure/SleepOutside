@@ -12,11 +12,8 @@ document
     checkoutProcess.calculateOrdertotal.bind(checkoutProcess)
   );
 
-
-
-  document.forms["checkout"].addEventListener("submit", (e) => {
-    e.preventDefault();
-    // e.target would contain our form in this case
-    checkoutProcess.checkout(e.target);
-
-  });
+document.forms["checkout"].addEventListener("submit", (e) => {
+  e.preventDefault();
+  // e.target would contain our form in this case
+  checkoutProcess.checkout(e.target);
+});
