@@ -1,11 +1,6 @@
 import { findProductById } from "./externalServices.mjs";
 import productDetails from "./productDetails.mjs";
-import {
-  addProductToCart,
-  plusSlides,
-  currentSlide,
-  addComment,
-} from "./productDetails.mjs";
+import { addProductToCart, plusSlides, addComment } from "./productDetails.mjs";
 import { setSuperscript, getParam, loadHeaderFooter } from "./utils.mjs";
 import Alert from "./alerts";
 const productId = getParam("product");

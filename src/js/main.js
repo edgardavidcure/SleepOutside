@@ -1,5 +1,4 @@
 import {
-  setSuperscript,
   loadHeaderFooter,
   getLocalStorage,
   setLocalStorage,

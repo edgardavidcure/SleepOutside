@@ -14,7 +14,7 @@ export default class Alert {
           alertsP +
           `<p style="background-color:${item.background} ; color: ${item.color};">${item.message}</p>`;
       });
-      alertsP = '<section class="alert-list">' + alertsP + "</section>";
+      alertsP = "<section class='alert-list'>" + alertsP + "</section>";
       return alertsP;
     } else {
       return "";

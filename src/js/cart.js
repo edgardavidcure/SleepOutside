@@ -3,14 +3,10 @@ import {
   setLocalStorage,
   loadHeaderFooter,
   calculateTotal,
-  setSuperscript,
-  capitalize,
 } from "./utils.mjs";
-const cartItems = getLocalStorage("so-cart");
 const cartSection = document.querySelector(".cart-footer");
 const cartTotalElement = document.querySelector(".cart-total");
 
-let cartTotal;
 function subtractQuantity(index) {
   const cartContent = getLocalStorage("so-cart");
   cartContent[index].totalInCart -= 1; // Subtract 1 from quantity

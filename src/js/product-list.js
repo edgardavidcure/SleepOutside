@@ -12,7 +12,6 @@ const productsList = document.querySelector(".product-list");
 const category = getParam("type");
 const closeBtn = document.querySelector(".close");
 const modal = document.getElementById("myModal");
-const modalContent = document.getElementById("modalContent");
 const modalProduct = document.getElementById("modalProduct");
 const searchInput = document.getElementById("searchBar");
 productList(productsList, category);
@@ -121,7 +120,7 @@ window.onclick = function (event) {
 const nameSortButton = document.getElementById("sortName");
 const priceSortButton = document.getElementById("sortFinalPrice");
 
-nameSortButton.addEventListener("click", (e) => {
+nameSortButton.addEventListener("click", () => {
   let isActive = nameSortButton.classList.contains("sortButtonActive");
 
   if (isActive) {
@@ -136,7 +135,7 @@ nameSortButton.addEventListener("click", (e) => {
   }
 });
 
-priceSortButton.addEventListener("click", (e) => {
+priceSortButton.addEventListener("click", () => {
   let isActive = priceSortButton.classList.contains("sortButtonActive");
 
   if (isActive) {
