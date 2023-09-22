@@ -102,6 +102,7 @@ function breadcrumb(type, qty) {
 }
 
 function updateIconColor() {
+  console.log("hello");
   const wishlistItems = getLocalStorage("so-wishlist") || [];
   const heartIcons = Array.from(document.getElementsByClassName("fa-heart"));
 
