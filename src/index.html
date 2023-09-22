@@ -10,71 +10,97 @@
 
     <link rel="stylesheet" href="/css/style.css" />
 
-    <script src="/js/product.js" type="module" defer></script>
+    <script src="/js/main.js" type="module" defer></script>
   </head>
 
   <body>
     <header class="divider" id="main-header"></header>
-
     <main class="divider">
-      <section class="product-detail">
-        <h3 id="productName"></h3>
-        <h2 class="divider" id="productNameWithoutBrand"></h2>
-        <span id="discount"></span>
-        <div>
-          <div id="slidesContainer">
-            <div class="mySlides">
-              <img
-                id=""
-                class="divider productImage"
-                src=""
-                alt=""
-                style="width: 100%"
-              />
-            </div>
-            <a class="prev">&#10094;</a>
-            <a class="next">&#10095;</a>
-          </div>
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Register Now for a Chance to Win!</h2>
+          <p>
+            Register with our site to enter the giveaway and receive exclusive
+            offers.
+          </p>
+          <button id="registerButton">Register</button>
+        </div>
+      </div>
+      <div class="hero">
+        <img
+          src="/images/banner-sm.jpg"
+          srcset="images/banner-sm.jpg 500w, images/banner.jpg"
+          alt="image of a high mountain lake"
+        />
+        <div class="logo logo--square">
+          <img src="/images/noun_Tent_2517.svg" alt="tent image for logo" />
+          <div>Sleep<span class="highlight">Outside</span></div>
+        </div>
+      </div>
+      <section class="mission">
+        <p>We spend too much time these days indoors...sitting usually.</p>
+        <p>No wonder we are a mess!</p>
+        <p>
+          What we really need is to get outside...in fact SLEEP outside. Our
+          mission is to provide you with everything you need to do this
+          comfortably at an affordable price.
+        </p>
+      </section>
+      <div id="product-grid">
+        <a href="product-list/index.html?type=tents">
+          <img
+            src="https://byui-cit.github.io/wdd330/images/category-icons/noun_Tent_3544767.svg"
+            alt="Tent Icon from Noun Project: Mustofa Bayu"
+          />
+          <p>Tents</p>
+        </a>
+        <a href="product-list/index.html?type=backpacks">
+          <img
+            src="https://byui-cit.github.io/wdd330/images/category-icons/noun_carrier%20bag_3544771.svg"
+            alt="Backpack Icon from Noun Project: Mustofa Bayu"
+          />
+          <p>Backpacks</p>
+        </a>
+        <a href="product-list/index.html?type=sleeping-bags">
+          <img
+            src="https://byui-cit.github.io/wdd330/images/category-icons/noun_Sleeping%20Bag_3544775.svg"
+            alt="Sleeping Bag Icon from Noun Project: Mustofa Bayu"
+          />
+          <p>Sleeping<br />Bags</p>
+        </a>
+        <a href="product-list/index.html?type=hammocks">
+          <img
+            src="https://byui-cit.github.io/wdd330/images/category-icons/noun_Hammock_791143.svg"
+            alt="Hammock Icon from Noun Project: Paul Richard"
+          />
+          <p>Hammocks</p>
+        </a>
+      </div>
 
-          <div class="row">
-            <div class="column">
-              <img
-                class="demo cursor productImage"
-                src=""
-                alt=""
-                style="width: 100%"
-              />
-            </div>
-          </div>
-        </div>
-        <p class="product-card__price slashed" id="productSuggestedPrice"></p>
-        <p class="product-card__price" id="productFinalPrice"></p>
-        <div id="colorsToselect">
-          <h5>Colors</h5>
-          <div id="productColorOptions"></div>
-        </div>
-        <p class="product__description" id="productDescriptionHtmlSimple"></p>
-        <div class="product-detail__add">
-          <button id="addToCart" data-id="">Add to Cart</button>
-        </div>
-      </section>
-      <section class="commentSection">
-        <h3>Comments</h3>
-        <form id="commentForm" class="newCommentForm" action="">
-          <textarea
-            name="newComment"
-            id="newComment"
-            placeholder="Add your comment here!"
-            cols="50"
-            rows="10"
-          ></textarea>
-          <button type="submit" class="commentButton">Submit</button>
-        </form>
-        <ul id="oldComments"></ul>
-      </section>
       <div id="alert-list"></div>
+      <div>
+        <form id="news-signup" action="">
+          <fieldset>
+            <h3>Sign Up To Our Newsletter!</h3>
+            <label for="signup">
+              <h4>Email:</h4>
+              <input
+                id="signup"
+                type="email"
+                placeholder="johnsmith@email.com"
+              />
+            </label>
+            <input
+              type="submit"
+              name="subscribe"
+              id="joinNews"
+              value="Subscribe"
+            />
+          </fieldset>
+        </form>
+      </div>
     </main>
-
     <footer id="main-footer"></footer>
   </body>
 </html>
