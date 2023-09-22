@@ -1,3 +1,5 @@
+import { getMultipleData } from "./externalServices.mjs";
+
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
@@ -60,20 +62,19 @@ export async function renderWithTemplate(
   }
 }
 
-
 export function setSuperscript() {
   const backpackSuperscript = document.getElementById("superscript");
   let cartItems = getLocalStorage("so-cart");
 
   if (cartItems && cartItems.length > 0) {
     let totalItemsInCart = 0;
-    cartItems.forEach(item => {
-      totalItemsInCart += item.totalInCart
-    backpackSuperscript.innerText = totalItemsInCart
+    cartItems.forEach((item) => {
+      totalItemsInCart += item.totalInCart;
+      backpackSuperscript.innerText = totalItemsInCart;
     });
     backpackSuperscript.style.display = "block";
-  } else{
-    backpackSuperscript.style.display = "none"
+  } else {
+    backpackSuperscript.style.display = "none";
   }
 }
 
@@ -115,14 +116,14 @@ export function capitalize(text) {
   return words.join(" ");
 }
 
-export function calculateTotal(cartItems){
+export function calculateTotal(cartItems) {
   let cartTotal = 0;
   let cartItemsPrices = [];
-  cartItems.forEach(item => {
-    cartItemsPrices.push(item.totalInCart * item.FinalPrice) 
+  cartItems.forEach((item) => {
+    cartItemsPrices.push(item.totalInCart * item.FinalPrice);
   });
-  cartTotal = (cartItemsPrices.reduce((a, b) => (a + b), 0)).toFixed(2);
-  return cartTotal
+  cartTotal = cartItemsPrices.reduce((a, b) => a + b, 0).toFixed(2);
+  return cartTotal;
 }
 
 export function alertMessage(message, scroll = true, duration = 5000) {
@@ -145,7 +146,6 @@ export function alertMessage(message, scroll = true, duration = 5000) {
   setTimeout(function () {
     main.removeChild(alert);
   }, duration);
-
 }
 
 export function removeAllAlerts() {
@@ -162,4 +162,47 @@ export function formDataToJSON(formElement) {
   });
 
   return convertedJSON;
+}
+
+export async function searchItems() {
+  const productsList = await getMultipleData([
+    "tents",
+    "backpacks",
+    "tents",
+    "sleeping-bags",
+  ]);
+
+  const searchInputElement = document.querySelector(".search_input");
+  const searchResultElement = document.querySelector(".search_results");
+  function searchResultProductTemplate(product) {
+    return `<li class="search__result"><a href="/product_pages/index.html?product=${
+      product.Id
+    }"><img src="${product.Colors[0].ColorChipImageSrc}">${product.Name.split(
+      ",",
+      1
+    )}</a></li>`;
+  }
+
+  searchInputElement.addEventListener("input", (e) => {
+    const filteredList = productsList
+      .filter((product) =>
+        product.Name.toLowerCase().includes(e.target.value.toLowerCase())
+      )
+      .slice(0, 10);
+
+    if (filteredList.length > 0 && e.target.value) {
+      renderListWithTemplate(
+        searchResultProductTemplate,
+        searchResultElement,
+        filteredList
+      );
+    } else if (filteredList.length > 0 && !e.target.value) {
+      searchResultElement.innerHTML = "";
+    } else {
+      const messageTemplate = () =>
+        '<li class="search__result noFound">No Items Found</li>';
+
+      renderWithTemplate(messageTemplate, searchResultElement);
+    }
+  });
 }

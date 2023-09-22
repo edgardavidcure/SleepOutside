@@ -2,6 +2,7 @@ import {
   loadHeaderFooter,
   getLocalStorage,
   setLocalStorage,
+  searchItems,
 } from "./utils.mjs";
 import Alert from "./alerts";
 
@@ -60,4 +61,8 @@ newsletterForm.addEventListener("submit", async (event) => {
     alertsContainer.style.animation = "slideOut 0.5s forwards";
     alertsContainer.style.position = "fixed";
   }, 5000);
+});
+
+document.addEventListener("DOMContentLoaded", async function () {
+  await searchItems();
 });
