@@ -5,7 +5,7 @@ import {
   searchItems,
 } from "./utils.mjs";
 import Alert from "./alerts";
-
+import "/css/style.css";
 loadHeaderFooter();
 
 document.addEventListener("DOMContentLoaded", () => {
