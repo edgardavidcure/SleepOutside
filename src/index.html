@@ -2,19 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Sleep Outside | Cedar Ridge Rimrock 2-person tent</title>
-
     <link rel="stylesheet" href="/css/style.css" />
-
-    <script src="/js/main.js" type="module" defer></script>
+    <script src="/js/main.js" type="module"></script>
   </head>
-
   <body>
     <header class="divider" id="main-header"></header>
-
     <main class="divider">
       
       <div id="myModal" class="modal">
@@ -31,7 +25,9 @@
       <div class="hero">
         <img
           src="/images/banner-sm.jpg"
-          srcset="images/banner-sm.jpg 500w, images/banner.jpg"
+          srcset="images/banner-sm.jpg 500w, images/banner.jpg 800w"
+          sizes="(max-width: 800px) 600px,
+         800px"
           alt="image of a high mountain lake"
         />
         <div class="logo logo--square">
@@ -81,11 +77,11 @@
 
       <div id="alert-list"></div>
       <div>
-        <form id="news-signup" action="">
+        <form id="news-signup" >
           <fieldset>
             <h3>Sign Up To Our Newsletter!</h3>
             <label for="signup">
-              <h4>Email:</h4>
+              Email:
               <input
                 id="signup"
                 type="email"
