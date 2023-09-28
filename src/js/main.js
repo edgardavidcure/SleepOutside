@@ -63,6 +63,6 @@ newsletterForm.addEventListener("submit", async (event) => {
   }, 5000);
 });
 
-// document.addEventListener("DOMContentLoaded", async function () {
-//   await searchItems();
-// });
+document.addEventListener("DOMContentLoaded", async function () {
+  await searchItems();
+});
