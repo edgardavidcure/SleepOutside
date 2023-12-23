@@ -6,13 +6,13 @@ import {
 } from "./utils.mjs";
 import Alert from "./alerts";
 import "/css/style.css";
+import { googleLoginRequest } from "./externalServices.mjs";
 loadHeaderFooter();
 
 document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("myModal");
   const closeButton = document.querySelector(".close");
   const registerButton = document.getElementById("registerButton");
-
   const hasRegistered = getLocalStorage("registered");
 
   // If the visitor has not registered, show the modal
@@ -65,4 +65,14 @@ newsletterForm.addEventListener("submit", async (event) => {
 
 document.addEventListener("DOMContentLoaded", async function () {
   await searchItems();
+  const userHeader = document.getElementById("user-header");
+  const authModal = document.querySelector(".auth-modal");
+  const googleLoginBtn = document.getElementById("google-login");
+  userHeader.addEventListener("click", () => {
+    authModal.classList.toggle("active-options");
+  });
+  googleLoginBtn.addEventListener("click", async () => {
+    const googleLoginURL = "http://localhost:3000/google";
+    window.location.href = googleLoginURL;
+  });
 });

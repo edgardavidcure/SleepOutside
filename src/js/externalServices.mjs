@@ -1,6 +1,7 @@
 import { getLocalStorage } from "./utils.mjs";
 
 const baseURL = import.meta.env.VITE_SERVER_URL;
+const googleLoginURL = "http://localhost:3000/google";
 const ordersURL = "https://wdd330-backend.onrender.com";
 async function convertToJson(res) {
   const data = await res.json();
@@ -64,6 +65,19 @@ export async function loginRequest(creds) {
     body: JSON.stringify(creds),
   };
   return await fetch(baseURL + "/login/", options).then(convertToJson);
+}
+
+export async function googleLoginRequest() {
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const data = await fetch(googleLoginURL, options);
+  console.log(googleLoginURL);
+  const json = await convertToJson(data);
+  console.log(json);
 }
 
 export async function getOrders() {
