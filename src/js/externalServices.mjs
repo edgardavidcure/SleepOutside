@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getCookie, getLocalStorage } from "./utils.mjs";
 
 const baseURL = import.meta.env.VITE_SERVER_URL;
 const googleLoginURL = "http://localhost:3000/google";
@@ -75,9 +75,8 @@ export async function googleLoginRequest() {
     },
   };
   const data = await fetch(googleLoginURL, options);
-  console.log(googleLoginURL);
   const json = await convertToJson(data);
-  console.log(json);
+  return json;
 }
 
 export async function getOrders() {
@@ -91,4 +90,30 @@ export async function getOrders() {
   };
   return await fetch(url + "/orders/", options).then(convertToJson);
   return await fetch(baseURL + "/orders/", options).then(convertToJson);
+}
+
+export async function getReviewsByProductId(productId) {
+  const data = await fetch(`http://localhost:3000/reviews/${productId}`);
+  const dataToJson = await convertToJson(data);
+  return dataToJson;
+}
+
+export async function addProductReview(data) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${getCookie("jwt")}`,
+    },
+    body: JSON.stringify(Object.fromEntries(data)),
+  };
+
+  try {
+    const response = await fetch(`http://localhost:3000/reviews/`, options);
+    const result = await convertToJson(response);
+    return result;
+  } catch (error) {
+    console.error("Error adding product review:", error);
+    // Handle error as needed
+  }
 }

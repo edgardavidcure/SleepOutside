@@ -1,7 +1,13 @@
-import { findProductById } from "./externalServices.mjs";
+import { addProductReview, findProductById } from "./externalServices.mjs";
 import productDetails from "./productDetails.mjs";
-import { addProductToCart, plusSlides, addComment } from "./productDetails.mjs";
-import { setSuperscript, getParam, loadHeaderFooter } from "./utils.mjs";
+import { addProductToCart, plusSlides } from "./productDetails.mjs";
+import {
+  setSuperscript,
+  getParam,
+  loadHeaderFooter,
+  getUserInfo,
+  getCookie,
+} from "./utils.mjs";
 import Alert from "./alerts";
 const productId = getParam("product");
 const addToCartButton = document.getElementById("addToCart");
@@ -50,12 +56,28 @@ export async function addToCartHandler(e) {
 // add listener to Add to Cart button
 addToCartButton.addEventListener("click", addToCartHandler);
 
+function loadFormData() {
+  const userIdElement = document.getElementById("userId");
+  const productIdElement = document.getElementById("productId");
+
+  productIdElement.setAttribute("value", productId);
+}
 //add listener to Add coment button
-const commentForm = document.getElementById("commentForm");
-commentForm.addEventListener("submit", function (e) {
+const submitReview = document.querySelector(".commentButton");
+
+submitReview.addEventListener("click", async function (e) {
   e.preventDefault();
-  let comment = document.getElementById("newComment").value;
-  addComment(comment, productId);
+  const productReviewsForm = document.getElementById("commentForm");
+  const token = await getCookie("jwt");
+  const formData = new FormData(productReviewsForm);
+  formData.append("jwt", token);
+  try {
+    const result = await addProductReview(formData);
+    // window.location.reload();
+  } catch (error) {
+    console.error("Error submitting review:", error);
+    // Handle error as needed
+  }
 });
 
 document.querySelector(".prev").addEventListener("click", function () {
@@ -65,3 +87,4 @@ document.querySelector(".prev").addEventListener("click", function () {
 document.querySelector(".next").addEventListener("click", function () {
   plusSlides(+1);
 });
+loadFormData();
