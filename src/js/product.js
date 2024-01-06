@@ -1,5 +1,8 @@
 import { addProductReview, findProductById } from "./externalServices.mjs";
-import productDetails from "./productDetails.mjs";
+import productDetails, {
+  renderProductReviews,
+  renderReviews,
+} from "./productDetails.mjs";
 import { addProductToCart, plusSlides } from "./productDetails.mjs";
 import {
   setSuperscript,
@@ -14,7 +17,7 @@ const addToCartButton = document.getElementById("addToCart");
 loadHeaderFooter();
 productDetails(productId);
 loadHeaderFooter();
-
+renderReviews(productId);
 // add to cart button event handler
 export async function addToCartHandler(e) {
   const alertInstance = new Alert();
@@ -73,7 +76,7 @@ submitReview.addEventListener("click", async function (e) {
   formData.append("jwt", token);
   try {
     const result = await addProductReview(formData);
-    // window.location.reload();
+    window.location.reload();
   } catch (error) {
     console.error("Error submitting review:", error);
     // Handle error as needed

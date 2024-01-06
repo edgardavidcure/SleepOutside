@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Sleep Outside | Cedar Ridge Rimrock 2-person tent</title>
-
     <link rel="stylesheet" href="../css/style.css" />
     <script
       src="https://kit.fontawesome.com/c20db622e4.js"
@@ -61,12 +60,16 @@
           <button id="addToCart" data-id="">Add to Cart</button>
         </div>
       </section>
-      <section class="commentSection">
-        <h3>Comments</h3>
+      <section id="productReviews">
+        <h3 class="left-align">Reviews</h3>
+        <hr />
+      </section>
+      <section class="reviewsForm">
+        <h3 class="left-align">Review your product</h3>
         <form id="commentForm" class="newCommentForm" action="">
           <input id="productId" type="text" name="productId" hidden />
           <input id="userId" type="text" name="userId" hidden />
-          <label for="rating">Overall Rating</label>
+          <label for="rating" class="bold">Overall rating*</label>
           <select name="rating" id="rating">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -74,12 +77,13 @@
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
+          <label for="review" class="bold">Your review*</label>
           <textarea
             name="review"
             id="review"
             placeholder="Add your review here!"
             cols="50"
-            rows="10"
+            rows="5"
           ></textarea>
           <button type="submit" class="commentButton">Add Review</button>
         </form>

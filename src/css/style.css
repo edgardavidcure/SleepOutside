@@ -678,21 +678,90 @@ footer {
   padding: 1em;
 }
 
-.commentSection {
-  margin-left: auto;
-  margin-right: auto;
-  width: 600px;
+#productReviews {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 7rem;
+}
+
+.reviewsForm {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 7rem;
 }
 .newCommentForm {
   display: flex;
-  flex-direction: row;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 25px;
+  width: fit-content;
 }
 .commentButton {
   margin: 0;
-  border-radius: 25px;
+  border-radius: 10px;
   background-color: #303030;
+  width: 100%;
+}
+
+.commentButton:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.bold {
+  font-weight: bold;
+}
+#review {
+  padding: 10px;
+}
+
+.productReview {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+.review-profilePic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.review-details {
+  display: flex;
+  flex-direction: column;
+}
+.review-text {
+  margin-top: 0;
+  font-size: 1rem;
+}
+.review-date {
+  font-size: 0.7rem;
+  margin: 0;
+  font-style: italic;
+  color: #757575;
+}
+.user-name {
+  margin: 0 0 5px 0;
+  font-size: 0.7rem;
+  font-style: italic;
+}
+hr {
+  width: 100%;
+  color: #303030;
+  margin: 0;
+}
+.left-align {
+  text-align: start;
+}
+.star-rating {
+  color: gold;
+  margin: 0 0 1rem 0;
+}
+
+.empty-star {
+  color: #ccc; /* Color for empty stars */
 }
 #oldComments {
   padding-left: 0;

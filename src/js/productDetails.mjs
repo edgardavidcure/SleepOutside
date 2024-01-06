@@ -2,6 +2,7 @@ import {
   addProductReview,
   findProductById,
   getProductsByCategory,
+  getReviewsByProductId,
 } from "./externalServices.mjs";
 import {
   discount,
@@ -9,6 +10,8 @@ import {
   getParam,
   renderListWithTemplate,
   setLocalStorage,
+  capitalize,
+  formatDate,
 } from "./utils.mjs";
 
 export default async function productDetails(productId) {
@@ -77,8 +80,6 @@ export function renderProductDetails(product) {
   document.getElementById("productDescriptionHtmlSimple").innerHTML =
     product.DescriptionHtmlSimple;
   document.getElementById("addToCart").setAttribute("data-id", product.Id);
-
-  renderComments(product.Name);
 
   if (product.SuggestedRetailPrice != product.FinalPrice) {
     const discountSpan = document.getElementById("discount");
@@ -150,24 +151,14 @@ export function renderProductNotFound() {
   productSection.insertAdjacentHTML("afterbegin", notFoundDetails);
 }
 
-function renderComments(productName) {
-  let comments = getLocalStorage("comments");
-
-  if (comments) {
-    let productComments = comments.filter(
-      (item) => item.product === productName
-    );
-
-    if (productComments.length !== 0) {
-      const list = document.getElementById("oldComments");
-      list.innerHTML = "";
-
-      productComments[0].comments.forEach((comment) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = comment;
-        list.appendChild(listItem);
-      });
-    }
+export async function renderReviews(productId) {
+  let comments = await getReviewsByProductId(productId);
+  const reviewsSection = document.getElementById("productReviews");
+  if (comments && comments.length > 0) {
+    const section = comments.map((comment) => renderProductReviews(comment));
+    reviewsSection.insertAdjacentHTML("beforeend", section.join(""));
+  } else {
+    reviewsSection.insertAdjacentHTML("beforeend", "<p>No reviews to show</p>");
   }
 }
 
@@ -250,4 +241,34 @@ export function showSlides(n) {
   slides[slideIndex - 1].style.display = "block";
 
   dots[slideIndex - 1].classList.add("active");
+}
+
+export function renderProductReviews(data) {
+  const stars = renderStars(data.rating);
+  return `<article class="productReview">
+  <img class="review-profilePic" src="${data.user.profilePic}" alt="${
+    data.user.firstName
+  } Profile Picture">
+  <div class="review-details">
+  <div class="star-rating">${stars}</div>
+    <p class="review-text">${capitalize(data.review)}</p>
+    <p class="user-name">Written by: <span class="bold">${
+      data.user.displayName
+    }</span></p>
+    <p class="review-date">On ${formatDate(data.createdAt)}</p>
+  </div>
+</article><hr/>`;
+}
+
+export function renderStars(rating) {
+  const starCount = 5;
+  const fullStars = Math.floor(rating);
+  console.log(rating);
+  let stars = `<i class="fa-solid fa-star"></i>`.repeat(fullStars);
+
+  stars += `<i class="empty-star fa-regular fa-star"></i>`.repeat(
+    starCount - Math.ceil(rating)
+  );
+
+  return stars;
 }

@@ -93,11 +93,27 @@ export async function getOrders() {
 }
 
 export async function getReviewsByProductId(productId) {
-  const data = await fetch(`http://localhost:3000/reviews/${productId}`);
-  const dataToJson = await convertToJson(data);
-  return dataToJson;
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  try {
+    const data = await fetch(
+      `http://localhost:3000/reviews/product/${productId}`,
+      options
+    );
+    const dataToJson = await convertToJson(data);
+    console.log("productId:", productId);
+    console.log("dataToJson:", dataToJson);
+    return dataToJson;
+  } catch (error) {
+    console.error("Error fetching reviews:", error);
+    // Handle the error or rethrow it if needed
+    throw error;
+  }
 }
-
 export async function addProductReview(data) {
   const options = {
     method: "POST",

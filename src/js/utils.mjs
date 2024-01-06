@@ -228,3 +228,12 @@ export function getUserInfo() {
   const userInfo = jwt_decode(jwt);
   return userInfo;
 }
+
+export function formatDate(dateTimeString) {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  const formattedDate = new Date(dateTimeString).toLocaleDateString(
+    "en-US",
+    options
+  );
+  return formattedDate;
+}
