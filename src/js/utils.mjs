@@ -225,8 +225,11 @@ export function getCookie(cookieName) {
 
 export function getUserInfo() {
   const jwt = getCookie("jwt");
-  const userInfo = jwt_decode(jwt);
-  return userInfo;
+  if (jwt) {
+    const userInfo = jwt_decode(jwt);
+    return userInfo;
+  }
+  return null;
 }
 
 export function formatDate(dateTimeString) {

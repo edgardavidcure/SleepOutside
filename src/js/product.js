@@ -1,5 +1,6 @@
 import { addProductReview, findProductById } from "./externalServices.mjs";
 import productDetails, {
+  displayReviewsForm,
   renderProductReviews,
   renderReviews,
 } from "./productDetails.mjs";
@@ -18,6 +19,7 @@ loadHeaderFooter();
 productDetails(productId);
 loadHeaderFooter();
 renderReviews(productId);
+displayReviewsForm();
 // add to cart button event handler
 export async function addToCartHandler(e) {
   const alertInstance = new Alert();

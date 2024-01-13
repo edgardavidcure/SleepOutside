@@ -2,12 +2,9 @@ import {
   loadHeaderFooter,
   getLocalStorage,
   setLocalStorage,
-  searchItems,
 } from "./utils.mjs";
 import Alert from "./alerts";
 import "/css/style.css";
-import { googleLoginRequest } from "./externalServices.mjs";
-loadHeaderFooter();
 
 document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("myModal");
@@ -61,18 +58,4 @@ newsletterForm.addEventListener("submit", async (event) => {
     alertsContainer.style.animation = "slideOut 0.5s forwards";
     alertsContainer.style.position = "fixed";
   }, 5000);
-});
-
-document.addEventListener("DOMContentLoaded", async function () {
-  await searchItems();
-  const userHeader = document.getElementById("user-header");
-  const authModal = document.querySelector(".auth-modal");
-  const googleLoginBtn = document.getElementById("google-login");
-  userHeader.addEventListener("click", () => {
-    authModal.classList.toggle("active-options");
-  });
-  googleLoginBtn.addEventListener("click", async () => {
-    const googleLoginURL = "http://localhost:3000/google";
-    window.location.href = googleLoginURL;
-  });
 });

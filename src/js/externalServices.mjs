@@ -3,7 +3,7 @@ import { getCookie, getLocalStorage } from "./utils.mjs";
 const baseURL = import.meta.env.VITE_SERVER_URL;
 const googleLoginURL = "http://localhost:3000/google";
 const ordersURL = "https://wdd330-backend.onrender.com";
-async function convertToJson(res) {
+export async function convertToJson(res) {
   const data = await res.json();
   if (res.ok) {
     return data;
@@ -131,5 +131,36 @@ export async function addProductReview(data) {
   } catch (error) {
     console.error("Error adding product review:", error);
     // Handle error as needed
+  }
+}
+
+export async function logout() {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    const response = await fetch(`http://localhost:3000/logout/`, options);
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.error(error);
+    // Handle error as needed
+  }
+}
+
+export async function handleLogout() {
+  try {
+    const response = await logout();
+    if (response.ok) {
+      document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      window.location.replace("http://localhost:5173/index.html");
+    }
+    return response;
+  } catch (error) {
+    console.log(error);
   }
 }

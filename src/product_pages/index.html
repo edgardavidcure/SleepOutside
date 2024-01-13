@@ -12,6 +12,7 @@
       src="https://kit.fontawesome.com/c20db622e4.js"
       crossorigin="anonymous"
     ></script>
+    <script src="../js/header.js" type="module"></script>
     <script src="../js/product.js" type="module" defer></script>
   </head>
 
@@ -64,31 +65,7 @@
         <h3 class="left-align">Reviews</h3>
         <hr />
       </section>
-      <section class="reviewsForm">
-        <h3 class="left-align">Review your product</h3>
-        <form id="commentForm" class="newCommentForm" action="">
-          <input id="productId" type="text" name="productId" hidden />
-          <input id="userId" type="text" name="userId" hidden />
-          <label for="rating" class="bold">Overall rating*</label>
-          <select name="rating" id="rating">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          <label for="review" class="bold">Your review*</label>
-          <textarea
-            name="review"
-            id="review"
-            placeholder="Add your review here!"
-            cols="50"
-            rows="5"
-          ></textarea>
-          <button type="submit" class="commentButton">Add Review</button>
-        </form>
-        <ul id="oldComments"></ul>
-      </section>
+      <section class="reviewsForm"></section>
       <div id="alert-list"></div>
     </main>
 

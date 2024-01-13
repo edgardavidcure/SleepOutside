@@ -1,5 +1,4 @@
 import {
-  loadHeaderFooter,
   getParam,
   discount,
   setLocalStorage,
@@ -15,7 +14,6 @@ const modal = document.getElementById("myModal");
 const modalProduct = document.getElementById("modalProduct");
 const searchInput = document.getElementById("searchBar");
 productList(productsList, category);
-loadHeaderFooter();
 
 async function getProductData(id) {
   let products = await getProductsByCategory(category);

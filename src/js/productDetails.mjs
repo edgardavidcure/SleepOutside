@@ -12,6 +12,7 @@ import {
   setLocalStorage,
   capitalize,
   formatDate,
+  getUserInfo,
 } from "./utils.mjs";
 
 export default async function productDetails(productId) {
@@ -271,4 +272,41 @@ export function renderStars(rating) {
   );
 
   return stars;
+}
+
+export function displayReviewsForm() {
+  const user = getUserInfo();
+  const reviewsForm = document.querySelector(".reviewsForm");
+  const loginUrl = "http://localhost:3000/google";
+  if (user) {
+    reviewsForm.style.display = "flex";
+    const form = `<h3 class="left-align">Review your product</h3>
+    <form id="commentForm" class="newCommentForm" action="">
+      <input id="productId" type="text" name="productId" hidden />
+      <input id="userId" type="text" name="userId" hidden />
+      <label for="rating" class="bold">Overall rating*</label>
+      <select name="rating" id="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <label for="review" class="bold">Your review*</label>
+      <textarea
+        name="review"
+        id="review"
+        placeholder="Add your review here!"
+        cols="50"
+        rows="5"
+      ></textarea>
+      <button type="submit" class="commentButton">Add Review</button>
+    </form>`;
+    reviewsForm.insertAdjacentHTML("beforeend", form);
+  } else {
+    reviewsForm.innerHTML = "";
+    const loginPrompt = `<a href="${loginUrl}">Login with Google</a> to add a product review`;
+    reviewsForm.insertAdjacentHTML("beforeend", loginPrompt);
+    reviewsForm.style.display = "block";
+  }
 }
