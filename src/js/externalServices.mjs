@@ -1,7 +1,7 @@
 import { getCookie, getLocalStorage } from "./utils.mjs";
 
 const baseURL = import.meta.env.VITE_SERVER_URL;
-const reviewsApiURL = import.meta.env.REVIEWSAPI_URL;
+const reviewsApiURL = import.meta.env.VITE_REVIEWSAPI_URL;
 export async function convertToJson(res) {
   const data = await res.json();
   if (res.ok) {
