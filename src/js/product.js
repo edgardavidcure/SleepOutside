@@ -75,7 +75,7 @@ const submitReview = document.querySelector(".commentButton");
 submitReview.addEventListener("click", async function (e) {
   e.preventDefault();
   const productReviewsForm = document.getElementById("commentForm");
-  const token = await getCookie("jwt");
+  const token = getCookie("jwt");
   const formData = new FormData(productReviewsForm);
   formData.append("jwt", token);
   try {
