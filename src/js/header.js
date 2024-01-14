@@ -62,7 +62,7 @@ function addListeners() {
     googleLoginBtn.addEventListener("click", async () => {
       const googleLoginURL = reviewsApiURL + "/google";
       console.log(googleLoginURL);
-      // window.location.href = googleLoginURL;
+      window.location.href = googleLoginURL;
     });
   }
 }
