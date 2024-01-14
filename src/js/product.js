@@ -93,3 +93,5 @@ document.querySelector(".next").addEventListener("click", function () {
   plusSlides(+1);
 });
 loadFormData();
+const user = getUserInfo();
+console.log(user);
