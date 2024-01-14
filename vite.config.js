@@ -16,6 +16,7 @@ export default defineConfig({
         "checkout-success": resolve(__dirname, "src/checkout/success.html"),
         orders: resolve(__dirname, "src/orders/index.html"),
         login: resolve(__dirname, "src/login/index.html"),
+        dashboard: resolve(__dirname, "src/dashboard/index.html"),
       },
     },
   },

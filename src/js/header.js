@@ -51,7 +51,7 @@ function addListeners() {
     const dashboardButtonElement = document.getElementById("linkToDashboard");
     const logoutButtonElement = document.getElementById("logoutBtn");
     dashboardButtonElement.addEventListener("click", () => {
-      window.location.href = "http://localhost:5173/dashboard/index.html";
+      window.location.href = "https://sleepout.netlify.app/dashboard/";
     });
     logoutButtonElement.addEventListener("click", async () => {
       await handleLogout();
@@ -60,7 +60,7 @@ function addListeners() {
     const googleLoginBtn = document.getElementById("google-login");
 
     googleLoginBtn.addEventListener("click", async () => {
-      const googleLoginURL = "http://localhost:3000/google";
+      const googleLoginURL = import.meta.env.REVIEWSAPI_URL + "/google";
       window.location.href = googleLoginURL;
     });
   }

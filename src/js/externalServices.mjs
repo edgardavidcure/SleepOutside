@@ -1,8 +1,7 @@
 import { getCookie, getLocalStorage } from "./utils.mjs";
 
 const baseURL = import.meta.env.VITE_SERVER_URL;
-const googleLoginURL = "http://localhost:3000/google";
-const ordersURL = "https://wdd330-backend.onrender.com";
+const reviewsApiURL = import.meta.env.REVIEWSAPI_URL;
 export async function convertToJson(res) {
   const data = await res.json();
   if (res.ok) {
@@ -74,7 +73,7 @@ export async function googleLoginRequest() {
       "Content-Type": "application/json",
     },
   };
-  const data = await fetch(googleLoginURL, options);
+  const data = await fetch(reviewsApiURL + "/google", options);
   const json = await convertToJson(data);
   return json;
 }
@@ -101,7 +100,7 @@ export async function getReviewsByProductId(productId) {
   };
   try {
     const data = await fetch(
-      `http://localhost:3000/reviews/product/${productId}`,
+      `${reviewsApiURL}/reviews/product/${productId}`,
       options
     );
     const dataToJson = await convertToJson(data);
@@ -125,7 +124,7 @@ export async function addProductReview(data) {
   };
 
   try {
-    const response = await fetch(`http://localhost:3000/reviews/`, options);
+    const response = await fetch(`${reviewsApiURL}/reviews/`, options);
     const result = await convertToJson(response);
     return result;
   } catch (error) {
@@ -143,7 +142,7 @@ export async function logout() {
   };
 
   try {
-    const response = await fetch(`http://localhost:3000/logout/`, options);
+    const response = await fetch(`${reviewsApiURL}/logout/`, options);
     console.log(response);
     return response;
   } catch (error) {
@@ -157,7 +156,7 @@ export async function handleLogout() {
     const response = await logout();
     if (response.ok) {
       document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      window.location.replace("http://localhost:5173/index.html");
+      window.location.replace("https://sleepout.netlify.app");
     }
     return response;
   } catch (error) {
