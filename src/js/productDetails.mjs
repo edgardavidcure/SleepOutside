@@ -277,7 +277,7 @@ export function renderStars(rating) {
 export function displayReviewsForm() {
   const user = getUserInfo();
   const reviewsForm = document.querySelector(".reviewsForm");
-  const loginUrl = "http://localhost:3000/google";
+  const loginUrl = import.meta.env.REVIEWSAPI_URL + "/google";
   if (user) {
     reviewsForm.style.display = "flex";
     const form = `<h3 class="left-align">Review your product</h3>
