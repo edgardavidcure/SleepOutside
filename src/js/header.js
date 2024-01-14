@@ -1,6 +1,6 @@
 import { handleLogout } from "./externalServices.mjs";
 import { getUserInfo, loadHeaderFooter, searchItems } from "./utils.mjs";
-
+const reviewsApiURL = import.meta.env.REVIEWSAPI_URL;
 loadHeaderFooter();
 
 function checkLoginState() {
@@ -60,7 +60,7 @@ function addListeners() {
     const googleLoginBtn = document.getElementById("google-login");
 
     googleLoginBtn.addEventListener("click", async () => {
-      const googleLoginURL = import.meta.env.REVIEWSAPI_URL + "/google";
+      const googleLoginURL = reviewsApiURL + "/google";
       window.location.href = googleLoginURL;
     });
   }
