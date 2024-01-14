@@ -51,7 +51,7 @@ function addListeners() {
     const dashboardButtonElement = document.getElementById("linkToDashboard");
     const logoutButtonElement = document.getElementById("logoutBtn");
     dashboardButtonElement.addEventListener("click", () => {
-      window.location.href = "https://sleepout.netlify.app/dashboard/";
+      window.location.href = "https://ec-sleepoutside.com/dashboard/";
     });
     logoutButtonElement.addEventListener("click", async () => {
       await handleLogout();

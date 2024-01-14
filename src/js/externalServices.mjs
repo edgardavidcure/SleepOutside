@@ -156,7 +156,7 @@ export async function handleLogout() {
     const response = await logout();
     if (response.ok) {
       document.cookie = "jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-      window.location.replace("https://sleepout.netlify.app");
+      window.location.replace("https://ec-sleepoutside.com");
     }
     return response;
   } catch (error) {
