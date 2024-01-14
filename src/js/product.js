@@ -20,6 +20,8 @@ productDetails(productId);
 loadHeaderFooter();
 renderReviews(productId);
 displayReviewsForm();
+const user = getUserInfo();
+console.log(user);
 // add to cart button event handler
 export async function addToCartHandler(e) {
   const alertInstance = new Alert();
@@ -93,5 +95,3 @@ document.querySelector(".next").addEventListener("click", function () {
   plusSlides(+1);
 });
 loadFormData();
-const user = getUserInfo();
-console.log(user);
