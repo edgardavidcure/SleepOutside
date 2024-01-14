@@ -4,9 +4,7 @@ import { logout, convertToJson, handleLogout } from "./externalServices.mjs";
 const userName = document.getElementById("userName");
 const logoutBtn = document.getElementById("logout-btn");
 const userInfo = getUserInfo();
-// userName.textContent = userInfo.displayName;
-const user = getUserInfo();
-console.log(user);
+userName.textContent = userInfo.displayName;
 logoutBtn.addEventListener("click", async () => {
   await handleLogout();
 });

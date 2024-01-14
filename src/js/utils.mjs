@@ -213,7 +213,6 @@ export function getCookie(cookieName) {
   for (const cookie of cookies) {
     const [name, value] = cookie.split("=");
     if (name === cookieName) {
-      console.log(value);
       return decodeURIComponent(value);
     }
   }
@@ -222,10 +221,8 @@ export function getCookie(cookieName) {
 
 export function getUserInfo() {
   const jwt = getCookie("jwt");
-  console.log(jwt);
   if (jwt) {
     const userInfo = jwt_decode(jwt);
-    console.log(userInfo);
     return userInfo;
   }
   return null;
